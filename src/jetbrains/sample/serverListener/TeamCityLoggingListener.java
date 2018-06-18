@@ -18,6 +18,8 @@ package jetbrains.sample.serverListener;
 
 import java.text.DateFormat;
 import java.util.*;
+
+import com.ldtteam.teamcity.github.GithubCommentingBuildFeature;
 import jetbrains.buildServer.Build;
 import jetbrains.buildServer.messages.Status;
 import jetbrains.buildServer.responsibility.ResponsibilityEntry;
@@ -42,7 +44,6 @@ public class TeamCityLoggingListener extends BuildServerAdapter {
   private final SBuildServer myBuildServer;
 
   public TeamCityLoggingListener(SBuildServer sBuildServer) {
-
     myBuildServer = sBuildServer;
   }
 
@@ -126,7 +127,12 @@ public class TeamCityLoggingListener extends BuildServerAdapter {
     final List<String[]> inspectionInformation = info.getInspections();
 
     addToLog(String.format("Build created: %d inspection entries.", inspectionInformation.size()), sRunningBuild);
-    info.getInspections().stream().map(Arrays::toString).forEach(s -> addToLog(s, sRunningBuild));
+    inspectionInformation.stream().map(Arrays::toString).forEach(s -> addToLog(s, sRunningBuild));
+
+    if (!sRunningBuild.getBuildFeaturesOfType(GithubCommentingBuildFeature.class.getName()).isEmpty())
+    {
+        addToLog("Build feature detected. -> Github commenting possible.");
+    }
   }
 
     @Nullable
