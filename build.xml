@@ -10,7 +10,7 @@
 
   <target name="package" depends="define.version">
     <package.teamcity.plugin name="${plugin.name}" server.output="${server.output.dir}"
-                             server.lib.dir="lib" server.lib.includes="*.jar"
+                             server.lib.dir="libs" server.lib.includes="*.jar"
                              plugin.descriptor.file="${basedir}/teamcity-plugin.xml"
                              plugin.version="${plugin.version}"/>
   </target>
@@ -35,6 +35,8 @@
   <target name="deploy" depends="dist, check.path.variable.teamcitydatadirectory">
     <deploy.teamcity.plugin name="${plugin.name}"/>
   </target>
+
+
 
   <target name="patch.plugin.descriptor.idea.artifact" depends="define.version">
     <echo message="Replacing '@version@' on '${plugin.version}' in the copied plugin descriptor file."/>

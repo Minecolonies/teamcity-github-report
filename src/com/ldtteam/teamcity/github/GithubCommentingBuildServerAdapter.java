@@ -17,6 +17,9 @@
 package com.ldtteam.teamcity.github;
 
 import com.google.common.collect.ImmutableList;
+import com.jcabi.github.Coordinates;
+import com.jcabi.github.Github;
+import com.jcabi.github.RtGithub;
 import jetbrains.buildServer.messages.Status;
 import jetbrains.buildServer.serverSide.*;
 import jetbrains.buildServer.serverSide.buildLog.BlockLogMessage;
@@ -28,11 +31,7 @@ import jetbrains.buildServer.vcs.SelectPrevBuildPolicy;
 import jetbrains.buildServer.vcs.VcsChange;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.kohsuke.github.GHPullRequest;
-import org.kohsuke.github.GHRepository;
-import org.kohsuke.github.GitHub;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.util.*;
 import java.util.function.Function;
@@ -130,17 +129,13 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
             final SBuildFeatureDescriptor featureDescriptor = commentingBuildFeature.get();
             final Map<String, String> parameters = featureDescriptor.getParameters();
 
-            final String username = parameters.get("username");
-            final String password = parameters.get("password");
             final String token = parameters.get("token");
 
             try
             {
-                final GitHub gh = GitHub.connect(username, token, password);
+                final String repo = runningBuild.getVcsRootEntries().get(0).getVcsRoot().getName();
 
-                if (!gh.isCredentialValid())
-                    throw new IllegalAccessException("Username, password or API Token are invalid.");
-
+                final Github gh = new RtGithub(token);
             }
             catch (Exception e)
             {

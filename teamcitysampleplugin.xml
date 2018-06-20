@@ -86,6 +86,7 @@
         <pathelement location="${path.variable.teamcitydistribution}/webapps/ROOT/WEB-INF/lib/spring-webmvc.jar"/>
         <pathelement location="${path.variable.teamcitydistribution}/webapps/ROOT/WEB-INF/lib/spring.jar"/>
         <pathelement location="${path.variable.teamcitydistribution}/webapps/ROOT/WEB-INF/lib/util.jar"/>
+        <pathelement location="${basedir}/libs/jcabi-github-0.39-jar-with-dependencies.jar" />
     </path>
 
     <path id="library.tomcat.classpath">
@@ -127,9 +128,6 @@
         <pathelement location="${path.variable.teamcitydistribution}/webapps/ROOT/WEB-INF/lib/httpcore-4.3.3.jar"/>
     </path>
 
-    <path id="library.github.classpath">
-        <pathelement location="./libs/jcabi-github-0.39-jar-with-dependencies.jar" />
-    </path>
     <!-- Application Server Libraries -->
 
     <!-- Modules -->
@@ -155,7 +153,6 @@
         <path refid="library.teamcity_open_api_server.classpath"/>
         <path refid="library.tomcat.classpath"/>
         <path refid="library.server.classpath" />
-        <path refid="library.github.classpath" />
     </path>
 
     <path id="server.runtime.production.module.classpath">
@@ -165,7 +162,6 @@
         <path refid="library.teamcity_open_api_server.classpath"/>
         <path refid="library.tomcat.classpath"/>
         <path refid="library.server.classpath" />
-        <path refid="library.github.classpath" />
     </path>
 
     <path id="server.module.classpath">
@@ -175,7 +171,6 @@
         <path refid="library.teamcity_open_api_server.classpath"/>
         <path refid="library.tomcat.classpath"/>
         <path refid="library.server.classpath" />
-        <path refid="library.github.classpath" />
     </path>
 
     <path id="server.runtime.module.classpath">
@@ -186,7 +181,6 @@
         <path refid="library.teamcity_open_api_server.classpath"/>
         <path refid="library.tomcat.classpath"/>
         <path refid="library.server.classpath" />
-        <path refid="library.github.classpath" />
     </path>
 
     <patternset id="excluded.from.module.server">
