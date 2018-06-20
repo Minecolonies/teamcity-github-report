@@ -31,3 +31,11 @@
         </td>
     </tr>
 </l:settingsGroup>
+<l:settingsGroup title="Github PR Branch ID">
+    <tr>
+        <th class="noBorder"><label for="branch">Pull request number:</label></th>
+        <td>
+            <props:textProperty name="branchId" className="longField"/>
+        </td>
+    </tr>
+</l:settingsGroup>

@@ -17,9 +17,7 @@
 package com.ldtteam.teamcity.github;
 
 import com.google.common.collect.ImmutableList;
-import com.jcabi.github.Coordinates;
-import com.jcabi.github.Github;
-import com.jcabi.github.RtGithub;
+import com.jcabi.github.*;
 import jetbrains.buildServer.messages.Status;
 import jetbrains.buildServer.serverSide.*;
 import jetbrains.buildServer.serverSide.buildLog.BlockLogMessage;
@@ -55,13 +53,10 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
     @Override
     public void beforeBuildFinish(@NotNull final SRunningBuild runningBuild)
     {
-        System.out.println("Build finishing.");
-
         final Optional<SBuildFeatureDescriptor> commentingBuildFeature = runningBuild.getBuildFeaturesOfType(GithubCommentingBuildFeature.class.getName()).stream().findFirst();
 
         if (commentingBuildFeature.isPresent())
         {
-            System.out.println("Detected PR Commenting.");
             final InspectionInfo info = getInspectionInfo(runningBuild);
             final List<String[]> inspectionData = info.getInspections();
             final Map<Long, String> inspectionIdsWithName =
@@ -130,12 +125,21 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
             final Map<String, String> parameters = featureDescriptor.getParameters();
 
             final String token = parameters.get("token");
+            final Integer pullId = Integer.parseInt(parameters.get("branch"));
 
             try
             {
-                final String repo = runningBuild.getVcsRootEntries().get(0).getVcsRoot().getName();
-
                 final Github gh = new RtGithub(token);
+
+                final String url = runningBuild.getVcsRootEntries().get(0).getProperties().get("url");
+                final String[] urlComponents = url.split("/");
+
+                final String ownerName = urlComponents[urlComponents.length - 2];
+                final String repoName = urlComponents[urlComponents.length - 1].replace(".git", "");
+
+                final Repo repo = gh.repos().get(new Coordinates.Simple(ownerName, repoName));
+                final Pull pullRequest = repo.pulls().get(pullId);
+                pullRequest.comments()
             }
             catch (Exception e)
             {

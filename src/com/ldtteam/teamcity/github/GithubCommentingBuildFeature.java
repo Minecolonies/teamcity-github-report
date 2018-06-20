@@ -101,7 +101,7 @@ public class GithubCommentingBuildFeature extends BuildFeature
     @Override
     public Map<String, String> getDefaultParameters()
     {
-        return ImmutableMap.of("token" , "<API token>");
+        return ImmutableMap.of("token" , "<API token>", "branch", "0");
     }
 
     /**
