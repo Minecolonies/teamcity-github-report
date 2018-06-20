@@ -16,7 +16,11 @@
 
 package com.ldtteam.teamcity.github;
 
+import com.google.common.collect.ImmutableList;
+import jetbrains.buildServer.messages.Status;
 import jetbrains.buildServer.serverSide.*;
+import jetbrains.buildServer.serverSide.buildLog.BlockLogMessage;
+import jetbrains.buildServer.serverSide.buildLog.MessageAttrs;
 import jetbrains.buildServer.serverSide.db.SQLRunnerEx;
 import jetbrains.buildServer.serverSide.impl.codeInspection.InspectionInfo;
 import jetbrains.buildServer.vcs.FilteredVcsChange;
@@ -24,10 +28,13 @@ import jetbrains.buildServer.vcs.SelectPrevBuildPolicy;
 import jetbrains.buildServer.vcs.VcsChange;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kohsuke.github.GHPullRequest;
+import org.kohsuke.github.GHRepository;
+import org.kohsuke.github.GitHub;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.time.Instant;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -51,7 +58,9 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
     {
         System.out.println("Build finishing.");
 
-        if (!runningBuild.getBuildFeaturesOfType(GithubCommentingBuildFeature.class.getName()).isEmpty())
+        final Optional<SBuildFeatureDescriptor> commentingBuildFeature = runningBuild.getBuildFeaturesOfType(GithubCommentingBuildFeature.class.getName()).stream().findFirst();
+
+        if (commentingBuildFeature.isPresent())
         {
             System.out.println("Detected PR Commenting.");
             final InspectionInfo info = getInspectionInfo(runningBuild);
@@ -76,35 +85,68 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                                                                                                  .collect(
                                                                                                    Collectors.toMap(
                                                                                                      Function.identity(),
+                                                                                                     //Line - Inspection info - R Count - Severity
                                                                                                      aLong -> info.getDetails(aLong, filteredVcsChange.getFileName(), false)
                                                                                                    )
                                                                                                  )
                                                                         )
                                                                       );
 
-            System.out.println("################################");
+
+            final BlockLogMessage openGithubCommentingBlock = runningBuild.getBuildLog().openBlock("Github PR Commenting", getClass().getName(), MessageAttrs.serverMessage());
+
+            runningBuild.getBuildLog().message("Discovered Inspections:", Status.NORMAL, MessageAttrs.serverMessage());
             fileData
               .keySet()
               .stream()
               .forEach(fileName-> {
-                  System.out.println(" - File: " + fileName);
+                  final BlockLogMessage openFileBlockMessage = runningBuild.getBuildLog().openBlock(fileName, getClass().getName() + "_file", MessageAttrs.serverMessage());
+
                   fileData
                     .get(fileName)
                     .keySet()
                     .stream()
+                    .filter(inspectionId -> !fileData.get(fileName).get(inspectionId).isEmpty())
                     .forEach(inspectionId -> {
-                        System.out.println("  ~ Inspection: " + inspectionIdsWithName.get(inspectionId));
+                        final BlockLogMessage openFileInspectionBlockMessage = runningBuild.getBuildLog().openBlock(inspectionIdsWithName.get(inspectionId), getClass().getName() + "_file_inspection", MessageAttrs.serverMessage());
 
                         fileData
                           .get(fileName)
                           .get(inspectionId)
                           .stream()
                           .forEach(inspectionFileData -> {
-                              System.out.println("   > " + Arrays.toString(inspectionFileData));
+                              runningBuild.getBuildLog().message(inspectionFileData[1] + " On line: " + inspectionFileData[0] + " with severity: " + inspectionFileData[3], Integer.parseInt(inspectionFileData[3]) < 3 ? Status.WARNING :
+                                Status.NORMAL, MessageAttrs.serverMessage());
                           });
+
+                        runningBuild.getBuildLog().closeBlock(inspectionIdsWithName.get(inspectionId), getClass().getName() + "_file_inspection", Date.from(Instant.now()), String.valueOf(openFileInspectionBlockMessage.getFlowId()));
                     });
+
+                  runningBuild.getBuildLog().closeBlock(fileName, getClass().getName() + "_file", Date.from(Instant.now()), String.valueOf(openFileBlockMessage.getFlowId()));
               });
-            System.out.println("################################");
+
+            runningBuild.getBuildLog().message("Starting Github upload.", Status.NORMAL, MessageAttrs.serverMessage());
+
+            final SBuildFeatureDescriptor featureDescriptor = commentingBuildFeature.get();
+            final Map<String, String> parameters = featureDescriptor.getParameters();
+
+            final String username = parameters.get("username");
+            final String password = parameters.get("password");
+            final String token = parameters.get("token");
+
+            try
+            {
+                final GitHub gh = GitHub.connect(username, token, password);
+
+                if (!gh.isCredentialValid())
+                    throw new IllegalAccessException("Username, password or API Token are invalid.");
+
+            }
+            catch (Exception e)
+            {
+                runningBuild.getBuildLog().error("FAILURE", e.getLocalizedMessage(), Date.from(Instant.now()), e.getLocalizedMessage(), String.valueOf(openGithubCommentingBlock.getFlowId()),
+                  ImmutableList.of());
+            }
         }
         else
         {

@@ -23,5 +23,6 @@
     <orderEntry type="library" name="TeamCity Open API server" level="project" />
     <orderEntry type="library" name="Tomcat" level="project" />
     <orderEntry type="library" name="Server" level="project" />
+    <orderEntry type="library" name="Github API" level="project" />
   </component>
 </module>

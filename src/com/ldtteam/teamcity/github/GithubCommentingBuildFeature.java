@@ -16,10 +16,19 @@
 
 package com.ldtteam.teamcity.github;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import jetbrains.buildServer.serverSide.BuildFeature;
+import jetbrains.buildServer.serverSide.InvalidProperty;
+import jetbrains.buildServer.serverSide.PropertiesProcessor;
 import jetbrains.buildServer.serverSide.SBuildServer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kohsuke.github.GitHub;
+
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Map;
 
 public class GithubCommentingBuildFeature extends BuildFeature
 {
@@ -69,7 +78,46 @@ public class GithubCommentingBuildFeature extends BuildFeature
     @Override
     public String getEditParametersUrl()
     {
-        return null;
+        return "editGithubPRCommentingFeatureView.jsp";
+    }
+
+    @NotNull
+    @Override
+    public String describeParameters(@NotNull final Map<String, String> params)
+    {
+        return "Username: " + params.getOrDefault("username", "NOT SET!");
+    }
+
+    @Nullable
+    @Override
+    public PropertiesProcessor getParametersProcessor()
+    {
+        return properties -> {
+            final String userName = properties.get("username");
+            final String passWord = properties.get("password");
+            final String apiKey = properties.get("token");
+
+            try
+            {
+                final GitHub gh = GitHub.connect(userName, apiKey, passWord);
+
+                if (!gh.isCredentialValid())
+                    throw new IOException("Could authorize against GitHub. Please check the Username, Password and API Token.");
+            }
+            catch (IOException e)
+            {
+                return ImmutableList.of(new InvalidProperty("username", e.getLocalizedMessage()));
+            }
+
+            return ImmutableList.of();
+        };
+    }
+
+    @Nullable
+    @Override
+    public Map<String, String> getDefaultParameters()
+    {
+        return ImmutableMap.of("username", "<username>", "password", "<password>", "token" , "<API token>");
     }
 
     /**

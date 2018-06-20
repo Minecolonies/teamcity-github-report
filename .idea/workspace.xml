@@ -22,7 +22,34 @@
     <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1d12109-90e6-4fae-8a61-0c469de38270" name="Default" comment="" />
+    <list default="true" id="a1d12109-90e6-4fae-8a61-0c469de38270" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/libs/jcabi-github-0.39-jar-with-dependencies.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/buildServerResources/editGithubPRCommentingFeatureView.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/server.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/samplePlugin.zip" beforeDir="false" afterPath="$PROJECT_DIR$/dist/samplePlugin.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/unpacked/server/samplePlugin.jar" beforeDir="false" afterPath="$PROJECT_DIR$/dist/unpacked/server/samplePlugin.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/unpacked/teamcity-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dist/unpacked/teamcity-plugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/META-INF/build-server-plugin-samplePlugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/META-INF/build-server-plugin-samplePlugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/server/jetbrains/sample/serverListener/TeamCityLoggingListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/server/jetbrains/sample/serverListener/TeamCityLoggingListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/build-server-plugin-samplePlugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/build-server-plugin-samplePlugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildFeature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildFeature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jetbrains/sample/controller/HelloUserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jetbrains/sample/extension/ConfigurationTabExtension.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jetbrains/sample/extensions/buildQueuePause/BuildQueuePauseButton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jetbrains/sample/extensions/buildQueuePause/BuildQueueStateController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jetbrains/sample/extensions/buildQueuePause/StartBuildPrecondition.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jetbrains/sample/extensions/pageExtension/PageExtension.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jetbrains/sample/patternProcessor/SampleTemplateProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jetbrains/sample/permissions/ShowPermissionsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jetbrains/sample/serverListener/TeamCityLoggingListener.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/jetbrains/sample/statistics/SampleStatisticsValue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamcitysampleplugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/teamcitysampleplugin.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,61 +60,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="TeamCityLoggingListener.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/jetbrains/sample/serverListener/TeamCityLoggingListener.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="GithubCommentingBuildServerAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="127" column="74" lean-forward="true" selection-start-line="127" selection-start-column="74" selection-end-line="127" selection-end-column="74" />
-              <folding>
-                <element signature="e#1438#1446#0" expanded="true" />
-                <element signature="e#1524#1546#0" expanded="true" />
-                <element signature="method#responsibleChanged#0;class#TeamCityLoggingListener#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="284">
+              <caret line="143" column="34" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teamcitysampleplugin.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/teamcitysampleplugin.xml">
+      <file leaf-file-name="GHRepository.java" pinned="false" current-in-tab="true">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/kohsuke/github-api/1.9/github-api-1.9-sources.jar!/org/kohsuke/github/GHRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1967">
-              <caret line="180" column="49" lean-forward="false" selection-start-line="180" selection-start-column="49" selection-end-line="180" selection-end-column="49" />
-              <folding>
-                <element signature="n#patternset#0;n#project#0;n#!!top" expanded="false" />
-                <element signature="n#patternset#1;n#project#0;n#!!top" expanded="false" />
-                <element signature="n#patternset#2;n#project#0;n#!!top" expanded="false" />
-              </folding>
+            <state relative-caret-position="-5003">
+              <caret line="50" column="3" lean-forward="true" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.xml">
+      <file leaf-file-name="GitHub.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/kohsuke/github-api/1.9/github-api-1.9-sources.jar!/org/kohsuke/github/GitHub.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="16" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="teamcity-plugin.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/teamcity-plugin.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="teamcity-common.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/teamcity-common.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="242" column="18" lean-forward="true" selection-start-line="242" selection-start-column="18" selection-end-line="242" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="-459">
+              <caret line="79" column="22" selection-start-line="79" selection-start-column="22" selection-end-line="79" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -95,52 +91,66 @@
       <file leaf-file-name="InspectionInfo.class" pinned="false" current-in-tab="false">
         <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server.jar!/jetbrains/buildServer/serverSide/impl/codeInspection/InspectionInfo.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="293" column="39" lean-forward="false" selection-start-line="293" selection-start-column="39" selection-end-line="293" selection-end-column="39" />
+            <state relative-caret-position="393">
+              <caret line="72" column="121" selection-start-line="72" selection-start-column="115" selection-end-line="72" selection-end-column="121" />
               <folding>
-                <element signature="e#11608#11609#0" expanded="true" />
-                <element signature="e#11655#11656#0" expanded="true" />
+                <element signature="e#4522#5820#0" expanded="true" />
+                <element signature="e#5819#5820#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.properties">
+      <file leaf-file-name="MessagesState.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/buildLog/MessagesState.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Date.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Date.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BlockLogMessage.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/buildLog/BlockLogMessage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="62" />
-              <folding />
+              <caret line="27" column="41" lean-forward="true" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modules.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <file leaf-file-name="SBuild.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/SBuild.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="226">
+              <caret line="477" column="36" selection-start-line="477" selection-start-column="13" selection-end-line="477" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugin.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/artifacts/plugin.xml">
+      <file leaf-file-name="build-server-plugin-samplePlugin.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/build-server-plugin-samplePlugin.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="102">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.idea/libraries/Server.xml">
+      <file leaf-file-name="editGithubPRCommentingFeatureView.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/META-INF/buildServerResources/editGithubPRCommentingFeatureView.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="34" column="95" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="34" selection-end-column="95" />
-              <folding />
+            <state relative-caret-position="221">
+              <caret line="13" column="110" selection-start-line="13" selection-start-column="110" selection-end-line="13" selection-end-column="110" />
             </state>
           </provider>
         </entry>
@@ -151,23 +161,30 @@
     <findStrings>
       <find>jar://$TeamCityDistribution$</find>
       <find>!/</find>
+      <find>library.server.classpath</find>
+      <find>library.server</find>
+      <find>library</find>
+      <find>github</find>
     </findStrings>
     <replaceStrings>
       <replace>${path.variable.teamcitydistribution}</replace>
     </replaceStrings>
   </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/teamcitysampleplugin.xml" />
         <option value="$PROJECT_DIR$/build.properties" />
         <option value="$PROJECT_DIR$/teamcity-common.xml" />
         <option value="$PROJECT_DIR$/src/jetbrains/sample/serverListener/TeamCityLoggingListener.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/teamcitysampleplugin.xml" />
+        <option value="$PROJECT_DIR$/src/META-INF/buildServerResources/editGithubPRCommentingFeatureView.jsp" />
+        <option value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildFeature.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/build-server-plugin-samplePlugin.xml" />
+        <option value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java" />
       </list>
     </option>
   </component>
@@ -184,104 +201,168 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
   </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1100" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="libraries" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ldtteam" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
-              <item name="sample" type="462c0819:PsiDirectoryNode" />
-              <item name="serverListener" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ldtteam" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ldtteam" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity" type="462c0819:PsiDirectoryNode" />
+              <item name="github" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="buildServerResources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Server" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Server" type="70bed36:NamedLibraryElementNode" />
+              <item name="server-api.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Server" type="70bed36:NamedLibraryElementNode" />
+              <item name="server-api.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Server" type="70bed36:NamedLibraryElementNode" />
+              <item name="server-api.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
+              <item name="buildServer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Server" type="70bed36:NamedLibraryElementNode" />
+              <item name="server-api.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
+              <item name="buildServer" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Server" type="70bed36:NamedLibraryElementNode" />
+              <item name="server-api.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
+              <item name="buildServer" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Server" type="70bed36:NamedLibraryElementNode" />
+              <item name="server-api.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="jetbrains" type="462c0819:PsiDirectoryNode" />
+              <item name="buildServer" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="projects" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path" value="E:\Projects\teamcity-github-report\libs" />
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
+    <property name="Repository.Attach.Sources" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="Repository&#9;FILE&#9;jar://C:/Users/Marc Hermans/.m2/repository/org/kohsuke/github-api/1.9/github-api-1.9-sources.jar!/org/kohsuke/github/GHRepository.java&#10;SQLRunn&#9;PSI&#9;JAVA://jetbrains.buildServer.serverSide.db.SQLRunnerEx&#10;Inspection&#9;PSI&#9;JAVA://jetbrains.buildServer.serverSide.impl.codeInspection.InspectionInfo" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/httpcore-4.3.3.jar!/" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$TeamCityDistribution$" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32319078" />
-    <property name="SearchEverywhereHistoryKey" value="SQLRunn&#9;PSI&#9;JAVA://jetbrains.buildServer.serverSide.db.SQLRunnerEx&#10;Inspection&#9;PSI&#9;JAVA://jetbrains.buildServer.serverSide.impl.codeInspection.InspectionInfo" />
+    <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -297,29 +378,12 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <module />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" />
@@ -329,24 +393,13 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
-      <envs />
       <patterns />
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
@@ -359,27 +412,15 @@
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
       <option name="PROPERTIES_FILE" />
-      <envs />
       <properties />
       <listeners />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-    </configuration>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -392,50 +433,57 @@
       <option name="presentableId" value="Default" />
       <updated>1528898181724</updated>
       <workItem from="1528898184296" duration="4078000" />
+      <workItem from="1528915267873" duration="1463000" />
+      <workItem from="1528959820061" duration="1113000" />
+      <workItem from="1529263212400" duration="258000" />
+      <workItem from="1529481052013" duration="303000" />
+      <workItem from="1529482518725" duration="4993000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4078000" />
+    <option name="totallyTimeSpent" value="12208000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-1" width="1936" height="1049" extended-state="6" />
+    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50033534" side_tool="true" weight="0.3997155" />
+      <window_info anchor="bottom" id="Application Servers" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="bottom" id="TeamCity" order="7" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" visible="true" weight="0.24949698" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49966466" weight="0.3997155" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32859176" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32968238" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26760563" />
+      <window_info anchor="bottom" id="SonarLint" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Tool Output" order="7" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="7" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="7" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -444,13 +492,9 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager />
-    <watches-manager />
-  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+    <option name="FILTER_TARGETS" value="true" />
     <buildFile url="file://$PROJECT_DIR$/build.xml">
       <targetFilters>
         <filter targetName="package" isVisible="false" />
@@ -467,92 +511,52 @@
         <filter targetName="clean.module.server" isVisible="true" />
         <filter targetName="init" isVisible="true" />
         <filter targetName="build.modules" isVisible="true" />
+        <filter targetName="check.teamcitydistribution" isVisible="true" />
+        <filter targetName="check.path.variable.teamcitydatadirectory" isVisible="true" />
+        <filter targetName="prepare.common.part" isVisible="false" />
+        <filter targetName="prepare.server.part" isVisible="false" />
+        <filter targetName="prepare.server.part.output" isVisible="false" />
+        <filter targetName="prepare.server.part.resources" isVisible="false" />
+        <filter targetName="pack.agent.part" isVisible="false" />
+        <filter targetName="prepare.agent.part" isVisible="false" />
+        <filter targetName="prepare.plugin.descriptor.file" isVisible="false" />
+        <filter targetName="check.already.defined" isVisible="false" />
       </targetFilters>
       <expanded value="true" />
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/db-upgrade.jar!/jetbrains/buildServer/serverSide/versioning/converters/InspectionFullConverter.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/db.jar!/jetbrains/buildServer/serverSide/db/SQLRunnerEx.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding>
-            <marker date="1526546970000" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1526546970000" expanded="false" signature="159:479" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="579" column="22" lean-forward="false" selection-start-line="579" selection-start-column="22" selection-end-line="579" selection-end-column="22" />
-          <folding>
-            <element signature="e#26957#26958#0" expanded="false" />
-            <element signature="e#27022#27023#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="234" column="18" lean-forward="false" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
-          <folding>
-            <element signature="e#10065#10066#0" expanded="false" />
-            <element signature="e#10148#10149#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="4559" column="25" lean-forward="false" selection-start-line="4559" selection-start-column="25" selection-end-line="4559" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/.idea/artifacts/plugin.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/libraries/Server.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="34" column="95" lean-forward="false" selection-start-line="3" selection-start-column="6" selection-end-line="34" selection-end-column="95" />
-          <folding />
+        <state relative-caret-position="578">
+          <caret line="34" column="95" selection-start-line="3" selection-start-column="6" selection-end-line="34" selection-end-column="95" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/artifacts/plugin.xml">
+    <entry file="file://$PROJECT_DIR$/src/jetbrains/sample/serverListener/TeamCityLoggingListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="1428">
+          <caret line="127" column="74" lean-forward="true" selection-start-line="127" selection-start-column="74" selection-end-line="127" selection-end-column="74" />
+          <folding>
+            <element signature="method#responsibleChanged#0;class#TeamCityLoggingListener#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/teamcitysampleplugin.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1967">
-          <caret line="180" column="49" lean-forward="false" selection-start-line="180" selection-start-column="49" selection-end-line="180" selection-end-column="49" />
+        <state relative-caret-position="2244">
+          <caret line="180" column="49" selection-start-line="180" selection-start-column="49" selection-end-line="180" selection-end-column="49" />
           <folding>
-            <element signature="n#patternset#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#patternset#1;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#patternset#2;n#project#0;n#!!top" expanded="false" />
+            <element signature="n#patternset#0;n#project#0;n#!!top" />
+            <element signature="n#patternset#1;n#project#0;n#!!top" />
+            <element signature="n#patternset#2;n#project#0;n#!!top" />
           </folding>
         </state>
       </provider>
@@ -560,55 +564,308 @@
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
-          <caret line="32" column="16" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-          <folding />
+          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/teamcity-plugin.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teamcity-common.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="4114">
+          <caret line="242" column="18" lean-forward="true" selection-start-line="242" selection-start-column="18" selection-end-line="242" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="62" />
-          <folding />
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/artifacts/plugin.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/Server.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="95" selection-start-line="3" selection-start-column="6" selection-end-line="34" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/db-upgrade.jar!/jetbrains/buildServer/serverSide/versioning/converters/InspectionFullConverter.class" />
+    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/db.jar!/jetbrains/buildServer/serverSide/db/SQLRunnerEx.class" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Collection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="579" column="22" selection-start-line="579" selection-start-column="22" selection-end-line="579" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="234" column="18" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="4559" column="25" selection-start-line="4559" selection-start-column="25" selection-end-line="4559" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/libraries/Server.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="95" selection-start-line="3" selection-start-column="6" selection-end-line="34" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/artifacts/plugin.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jetbrains/sample/serverListener/TeamCityLoggingListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1938">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
+          <folding>
+            <element signature="method#responsibleChanged#0;class#TeamCityLoggingListener#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jetbrains/sample/controller/HelloUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/jetbrains/sample/extension/ConfigurationTabExtension.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="43" column="3" selection-start-line="43" selection-start-column="3" selection-end-line="43" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/teamcity-common.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="242" column="18" lean-forward="true" selection-start-line="242" selection-start-column="18" selection-end-line="242" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="4488">
+          <caret line="264" column="25" selection-start-line="264" selection-start-column="25" selection-end-line="264" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teamcitysampleplugin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="129" column="28" selection-start-line="129" selection-start-column="22" selection-end-line="129" selection-end-column="28" />
+          <folding>
+            <element signature="n#patternset#0;n#project#0;n#!!top" />
+            <element signature="n#patternset#1;n#project#0;n#!!top" />
+            <element signature="n#patternset#2;n#project#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-137">
+          <caret line="5" column="52" selection-start-line="5" selection-start-column="52" selection-end-line="5" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teamcity-plugin.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/PropertiesProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/InvalidProperty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server-api.jar!/jetbrains/buildServer/serverSide/BuildFeature.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server.jar!/jetbrains/buildServer/buildFailures/buildLog/BuildFailureOnMessageFeature.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="55" column="18" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/BuildFeature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="62" column="16" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
+          <folding>
+            <element signature="e#1916#1917#0" expanded="true" />
+            <element signature="e#1935#1936#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server.jar!/jetbrains/buildServer/serverSide/impl/VcsLabelingBuildFeature.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server-api.jar!/jetbrains/buildServer/controllers/admin/projects/BuildRunnerBean.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3060">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/tables.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="221" column="16" selection-start-line="221" selection-start-column="16" selection-end-line="221" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/ParametersDescriptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/build-server-plugin-samplePlugin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/buildServerResources/editGithubPRCommentingFeatureView.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="110" selection-start-line="13" selection-start-column="110" selection-end-line="13" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/buildLog/LogMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-85">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/buildLog/BlockLogMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="27" column="41" lean-forward="true" selection-start-line="27" selection-start-column="41" selection-end-line="27" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Date.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server.jar!/jetbrains/buildServer/serverSide/impl/codeInspection/InspectionInfo.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="293" column="39" lean-forward="false" selection-start-line="293" selection-start-column="39" selection-end-line="293" selection-end-column="39" />
+        <state relative-caret-position="393">
+          <caret line="72" column="121" selection-start-line="72" selection-start-column="115" selection-end-line="72" selection-end-column="121" />
           <folding>
-            <element signature="e#11608#11609#0" expanded="true" />
-            <element signature="e#11655#11656#0" expanded="true" />
+            <element signature="e#4522#5820#0" expanded="true" />
+            <element signature="e#5819#5820#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/jetbrains/sample/serverListener/TeamCityLoggingListener.java">
+    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/buildLog/MessagesState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="127" column="74" lean-forward="true" selection-start-line="127" selection-start-column="74" selection-end-line="127" selection-end-column="74" />
+        <state relative-caret-position="269">
+          <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildFeature.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="80" column="53" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
           <folding>
-            <element signature="e#1438#1446#0" expanded="true" />
-            <element signature="e#1524#1546#0" expanded="true" />
-            <element signature="method#responsibleChanged#0;class#TeamCityLoggingListener#0" expanded="false" />
+            <element signature="e#2287#2288#0" expanded="true" />
+            <element signature="e#2314#2315#0" expanded="true" />
+            <element signature="e#2475#2476#0" expanded="true" />
+            <element signature="e#2550#2551#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/SBuild.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="477" column="36" selection-start-line="477" selection-start-column="13" selection-end-line="477" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/kohsuke/github-api/1.9/github-api-1.9-sources.jar!/org/kohsuke/github/GHPullRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="143" column="34" selection-start-line="143" selection-start-column="34" selection-end-line="143" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/kohsuke/github-api/1.9/github-api-1.9-sources.jar!/org/kohsuke/github/GitHub.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459">
+          <caret line="79" column="22" selection-start-line="79" selection-start-column="22" selection-end-line="79" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/kohsuke/github-api/1.9/github-api-1.9-sources.jar!/org/kohsuke/github/GHRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5003">
+          <caret line="50" column="3" lean-forward="true" selection-start-line="50" selection-start-column="3" selection-end-line="50" selection-end-column="3" />
         </state>
       </provider>
     </entry>
@@ -682,7 +939,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.32319078" />
               </list>
             </option>
           </splitter-proportions>

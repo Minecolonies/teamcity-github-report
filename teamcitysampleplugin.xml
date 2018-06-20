@@ -126,6 +126,10 @@
         <pathelement location="${path.variable.teamcitydistribution}/webapps/ROOT/WEB-INF/lib/httpclient-4.3.6.jar"/>
         <pathelement location="${path.variable.teamcitydistribution}/webapps/ROOT/WEB-INF/lib/httpcore-4.3.3.jar"/>
     </path>
+
+    <path id="library.github.classpath">
+        <pathelement location="./libs/jcabi-github-0.39-jar-with-dependencies.jar" />
+    </path>
     <!-- Application Server Libraries -->
 
     <!-- Modules -->
@@ -151,6 +155,7 @@
         <path refid="library.teamcity_open_api_server.classpath"/>
         <path refid="library.tomcat.classpath"/>
         <path refid="library.server.classpath" />
+        <path refid="library.github.classpath" />
     </path>
 
     <path id="server.runtime.production.module.classpath">
@@ -160,6 +165,7 @@
         <path refid="library.teamcity_open_api_server.classpath"/>
         <path refid="library.tomcat.classpath"/>
         <path refid="library.server.classpath" />
+        <path refid="library.github.classpath" />
     </path>
 
     <path id="server.module.classpath">
@@ -169,6 +175,7 @@
         <path refid="library.teamcity_open_api_server.classpath"/>
         <path refid="library.tomcat.classpath"/>
         <path refid="library.server.classpath" />
+        <path refid="library.github.classpath" />
     </path>
 
     <path id="server.runtime.module.classpath">
@@ -179,8 +186,8 @@
         <path refid="library.teamcity_open_api_server.classpath"/>
         <path refid="library.tomcat.classpath"/>
         <path refid="library.server.classpath" />
+        <path refid="library.github.classpath" />
     </path>
-
 
     <patternset id="excluded.from.module.server">
         <patternset refid="ignored.files"/>
