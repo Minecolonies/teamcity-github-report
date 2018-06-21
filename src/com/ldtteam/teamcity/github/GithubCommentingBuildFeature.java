@@ -19,12 +19,17 @@ package com.ldtteam.teamcity.github;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import jetbrains.buildServer.serverSide.BuildFeature;
+import jetbrains.buildServer.serverSide.InvalidProperty;
 import jetbrains.buildServer.serverSide.PropertiesProcessor;
 import jetbrains.buildServer.serverSide.SBuildServer;
 import jetbrains.buildServer.web.openapi.PluginDescriptor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kohsuke.github.GitHub;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class GithubCommentingBuildFeature extends BuildFeature
@@ -84,24 +89,64 @@ public class GithubCommentingBuildFeature extends BuildFeature
     @Override
     public String describeParameters(@NotNull final Map<String, String> params)
     {
-        if (!params.containsKey("token"))
-            return "Token: NOT SET!";
+        if (!params.containsKey("username"))
+            return "Username: NOT SET!";
 
-        return "Token: *********";
+        return "User: " + params.get("username");
     }
 
     @Nullable
     @Override
     public PropertiesProcessor getParametersProcessor()
     {
-        return properties -> ImmutableList.of();
+        return properties -> {
+            final List<InvalidProperty> errors = new ArrayList<>();
+            if (!properties.containsKey("token"))
+                errors.add(new InvalidProperty("token", "Token is missing or not specified."));
+
+            if (!properties.containsKey("username"))
+                errors.add(new InvalidProperty("username", "username is missing or not specified."));
+
+            if (!properties.containsKey("password"))
+                errors.add(new InvalidProperty("password", "password is missing or not specified."));
+
+            if (!properties.containsKey("branch"))
+                errors.add(new InvalidProperty("branch", "branch is missing or not specified."));
+            
+            if (!errors.isEmpty())
+                return errors;
+            
+            final String username = properties.get("username");
+            final String password = properties.get("password");
+            final String token = properties.get("token");
+
+            try
+            {
+                final GitHub gitHub = GitHub.connect(username, token, password);
+                
+                if (!gitHub.isCredentialValid())
+                {
+                    errors.add(new InvalidProperty("username", "Could not authenticate you against github. Possible your username is wrong."));
+                    errors.add(new InvalidProperty("token", "Could not authenticate you against github. Possible your token is wrong."));
+                    errors.add(new InvalidProperty("password", "Could not authenticate you against github. Possible your password is wrong."));
+                }
+            }
+            catch (IOException e)
+            {
+                errors.add(new InvalidProperty("username", "Could not connect to Github. Please try again later."));
+                errors.add(new InvalidProperty("token", "Could not connect to Github. Please try again later."));
+                errors.add(new InvalidProperty("password", "Could not connect to Github. Please try again later."));
+            }
+
+            return errors;
+        };
     }
 
     @Nullable
     @Override
     public Map<String, String> getDefaultParameters()
     {
-        return ImmutableMap.of("token" , "<API token>", "branch", "0");
+        return ImmutableMap.of("token" , "<API token>", "username", "<Username>", "password", "<Password>", "branch", "0");
     }
 
     /**

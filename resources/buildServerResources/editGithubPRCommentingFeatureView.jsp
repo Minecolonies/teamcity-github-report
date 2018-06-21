@@ -25,9 +25,21 @@
 
 <l:settingsGroup title="Github Connection">
     <tr>
+        <th class="noBorder"><label for="username">Username:</label></th>
+        <td>
+            <props:textProperty name="username" className="longField"/>
+        </td>
+    </tr>
+    <tr>
         <th class="noBorder"><label for="token">API Token:</label></th>
         <td>
             <props:passwordProperty name="token" className="longField"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="noBorder"><label for="password">Password:</label></th>
+        <td>
+            <props:passwordProperty name="password" className="longField"/>
         </td>
     </tr>
 </l:settingsGroup>
@@ -35,7 +47,7 @@
     <tr>
         <th class="noBorder"><label for="branch">Pull request number:</label></th>
         <td>
-            <props:textProperty name="branchId" className="longField"/>
+            <props:textProperty name="branch" className="longField"/>
         </td>
     </tr>
 </l:settingsGroup>

@@ -7,6 +7,7 @@
       <root url="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/util.jar!/" />
       <root url="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/spring-webmvc.jar!/" />
       <root url="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/jdom.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

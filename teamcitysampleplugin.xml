@@ -86,7 +86,7 @@
         <pathelement location="${path.variable.teamcitydistribution}/webapps/ROOT/WEB-INF/lib/spring-webmvc.jar"/>
         <pathelement location="${path.variable.teamcitydistribution}/webapps/ROOT/WEB-INF/lib/spring.jar"/>
         <pathelement location="${path.variable.teamcitydistribution}/webapps/ROOT/WEB-INF/lib/util.jar"/>
-        <pathelement location="${basedir}/libs/jcabi-github-0.39-jar-with-dependencies.jar" />
+        <pathelement location="${basedir}/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar" />
     </path>
 
     <path id="library.tomcat.classpath">

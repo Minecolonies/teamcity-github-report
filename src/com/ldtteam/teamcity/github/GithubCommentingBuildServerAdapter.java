@@ -17,7 +17,6 @@
 package com.ldtteam.teamcity.github;
 
 import com.google.common.collect.ImmutableList;
-import com.jcabi.github.*;
 import jetbrains.buildServer.messages.Status;
 import jetbrains.buildServer.serverSide.*;
 import jetbrains.buildServer.serverSide.buildLog.BlockLogMessage;
@@ -29,6 +28,9 @@ import jetbrains.buildServer.vcs.SelectPrevBuildPolicy;
 import jetbrains.buildServer.vcs.VcsChange;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kohsuke.github.GHPullRequestReviewBuilder;
+import org.kohsuke.github.GitHub;
+import org.kohsuke.github.GitHubBuilder;
 
 import java.time.Instant;
 import java.util.*;
@@ -58,6 +60,8 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
         if (commentingBuildFeature.isPresent())
         {
             final InspectionInfo info = getInspectionInfo(runningBuild);
+            //Total - New Total - Old Total - Errors - New Errors - Old Errors
+            final int[] statistics = info.getStatistics();
             final List<String[]> inspectionData = info.getInspections();
             final Map<Long, String> inspectionIdsWithName =
               inspectionData.stream().filter(data -> Integer.parseInt(data[6]) >= 0).collect(Collectors.toMap(data -> Long.parseLong(data[2]), data -> data[3]));
@@ -124,32 +128,41 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
             final SBuildFeatureDescriptor featureDescriptor = commentingBuildFeature.get();
             final Map<String, String> parameters = featureDescriptor.getParameters();
 
+            final String username = parameters.get("username");
             final String token = parameters.get("token");
-            final Integer pullId = Integer.parseInt(parameters.get("branch"));
+            final String password = parameters.get("password");
+            final String url = runningBuild.getVcsRootEntries().get(0).getProperties().get("url");
+            final String[] urlParts = url.split("/");
+            final String repo = urlParts[urlParts.length - 2] + "/" + urlParts[urlParts.length - 1].replace(".git", "");
 
             try
             {
-                final Github gh = new RtGithub(token);
+                final Integer pullId = Integer.parseInt(parameters.get("branch"));
 
-                final String url = runningBuild.getVcsRootEntries().get(0).getProperties().get("url");
-                final String[] urlComponents = url.split("/");
+                try
+                {
 
-                final String ownerName = urlComponents[urlComponents.length - 2];
-                final String repoName = urlComponents[urlComponents.length - 1].replace(".git", "");
+                    final GitHub github = new GitHubBuilder().withOAuthToken(token, username).withPassword(username, password).build();
 
-                final Repo repo = gh.repos().get(new Coordinates.Simple(ownerName, repoName));
-                final Pull pullRequest = repo.pulls().get(pullId);
-                pullRequest.comments()
-            }
-            catch (Exception e)
+                    if (!github.isCredentialValid())
+                    {
+                        throw new IllegalAccessException("Could not authenticate configured user against GitHub.");
+                    }
+
+                    final GHPullRequestReviewBuilder builder = github.getRepository(repo).getPullRequest(pullId).createReview();
+                }
+                catch (Exception e)
+                {
+                    runningBuild.getBuildLog().error("FAILURE", e.getLocalizedMessage(), Date.from(Instant.now()), e.getLocalizedMessage(), String.valueOf(openGithubCommentingBlock.getFlowId()),
+                      ImmutableList.of());
+                }
+
+            } catch (NumberFormatException nfe)
             {
-                runningBuild.getBuildLog().error("FAILURE", e.getLocalizedMessage(), Date.from(Instant.now()), e.getLocalizedMessage(), String.valueOf(openGithubCommentingBlock.getFlowId()),
-                  ImmutableList.of());
+                runningBuild.getBuildLog().message("Cannot upload comments to Github. Branch is not a number.", Status.ERROR, MessageAttrs.serverMessage());
             }
-        }
-        else
-        {
-            System.out.println("No PR commenting detected.");
+
+            runningBuild.getBuildLog().closeBlock("Github PR Commenting", getClass().getName(), Date.from(Instant.now()), String.valueOf(openGithubCommentingBlock.getFlowId()));
         }
     }
 
