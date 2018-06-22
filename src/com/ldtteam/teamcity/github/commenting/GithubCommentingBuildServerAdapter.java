@@ -1,20 +1,4 @@
-/*
- * Copyright 2000-2018 JetBrains s.r.o.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-package com.ldtteam.teamcity.github;
+package com.ldtteam.teamcity.github.commenting;
 
 import com.google.common.collect.ImmutableList;
 import jetbrains.buildServer.messages.Status;
@@ -24,15 +8,11 @@ import jetbrains.buildServer.serverSide.buildLog.MessageAttrs;
 import jetbrains.buildServer.serverSide.db.SQLRunnerEx;
 import jetbrains.buildServer.serverSide.impl.codeInspection.InspectionInfo;
 import jetbrains.buildServer.vcs.FilteredVcsChange;
-import jetbrains.buildServer.vcs.SVcsModification;
 import jetbrains.buildServer.vcs.SelectPrevBuildPolicy;
 import jetbrains.buildServer.vcs.VcsChange;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.kohsuke.github.GHPullRequestReviewBuilder;
-import org.kohsuke.github.GHPullRequestReviewEvent;
-import org.kohsuke.github.GitHub;
-import org.kohsuke.github.GitHubBuilder;
+import org.kohsuke.github.*;
 
 import java.time.Instant;
 import java.util.*;
@@ -87,22 +67,10 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                                                                                   Collectors.toMap(
                                                                                     Function.identity(),
                                                                                     //Line - FQName - Message - Severity
-                                                                                    aLong -> info.getDetails(aLong, filteredVcsChange.getFileName(), false)
+                                                                                    aLong -> info.getDetails(aLong, filteredVcsChange.getFileName(), false),
+                                                                                    this::mergeFileData
                                                                                   )
-                                                                                ,
-                                                                                (inspectionsFromFileOne, inspectionsFromFileTwo) -> {
-                                                                                    inspectionsFromFileTwo.keySet().forEach(inspectionId -> {
-                                                                                        inspectionsFromFileOne.merge(
-                                                                                          inspectionId,
-                                                                                          inspectionsFromFileTwo.get(inspectionId),
-                                                                                          (inspectionDataFromFileTwo, inspectionDataFromFileOne) -> {
-                                                                                              inspectionDataFromFileTwo.addAll(inspectionDataFromFileOne);
-                                                                                              return new ArrayList<>(new HashSet<>(inspectionDataFromFileTwo));
-                                                                                          });
-                                                                                    });
-
-                                                                                    return inspectionsFromFileOne;
-                                                                                });
+                                                                                );
 
                                                                               return data;
                                                                           })
@@ -151,7 +119,7 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
             final String password = parameters.get("password");
             final String url = runningBuild.getVcsRootEntries().get(0).getProperties().get("url");
             final String[] urlParts = url.split("/");
-            final String repo = urlParts[urlParts.length - 2] + "/" + urlParts[urlParts.length - 1].replace(".git", "");
+            final String repoName = urlParts[urlParts.length - 2] + "/" + urlParts[urlParts.length - 1].replace(".git", "");
 
             try
             {
@@ -166,6 +134,10 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                     {
                         throw new IllegalAccessException("Could not authenticate configured user against GitHub.");
                     }
+
+                    final GHRepository repo = github.getRepository(repoName);
+                    final GHPullRequest request = repo.getPullRequest(pullId);
+                    request.getDiffUrl()
 
                     final GHPullRequestReviewBuilder builder = github.getRepository(repo).getPullRequest(pullId).createReview();
 
@@ -224,5 +196,26 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
     {
         BuildTypeEx buildType = (BuildTypeEx) build.getBuildType();
         return buildType == null ? null : new InspectionInfo((SQLRunnerEx) server.getSQLRunner(), build);
+    }
+
+    private final List
+
+    private final List<String[]> mergeFileData(List<String[]> fileOneData, List<String[]> fileTwoData)
+    {
+        final List<String[]> result = new ArrayList<>();
+
+
+
+        inspectionsFromFileTwo.keySet().forEach(inspectionId -> {
+            inspectionsFromFileOne.merge(
+              inspectionId,
+              inspectionsFromFileTwo.get(inspectionId),
+              (inspectionDataFromFileTwo, inspectionDataFromFileOne) -> {
+                  inspectionDataFromFileTwo.addAll(inspectionDataFromFileOne);
+                  return new ArrayList<>(new HashSet<>(inspectionDataFromFileTwo));
+              });
+        });
+
+        return inspectionsFromFileOne;
     }
 }

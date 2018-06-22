@@ -23,11 +23,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1d12109-90e6-4fae-8a61-0c469de38270" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/dist/samplePlugin.zip" afterPath="$PROJECT_DIR$/dist/samplePlugin.zip" />
-      <change beforePath="$PROJECT_DIR$/dist/unpacked/server/samplePlugin.jar" afterPath="$PROJECT_DIR$/dist/unpacked/server/samplePlugin.jar" />
-      <change beforePath="$PROJECT_DIR$/dist/unpacked/teamcity-plugin.xml" afterPath="$PROJECT_DIR$/dist/unpacked/teamcity-plugin.xml" />
-      <change beforePath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java" afterPath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java" />
+      <change afterPath="$PROJECT_DIR$/libs/Diffparser.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libs/Markdown-generator-1.3.1.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/FileInspectionData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/InspectionEntryData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/LineInspectionData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/Severity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/TeamCity_Third_Party.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/TeamCity_Third_Party.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/build-server-plugin-samplePlugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/build-server-plugin-samplePlugin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildFeature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildFeature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildServerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teamcitysampleplugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/teamcitysampleplugin.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -40,11 +47,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GithubCommentingBuildServerAdapter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java">
+      <file leaf-file-name="GithubCommentingBuildServerAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildServerAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="85" column="82" lean-forward="false" selection-start-line="85" selection-start-column="82" selection-end-line="85" selection-end-column="82" />
+            <state relative-caret-position="-3499">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1822#1823#0" expanded="true" />
@@ -56,263 +62,113 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="InspectionEntryData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/InspectionEntryData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LineInspectionData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/LineInspectionData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="292">
+              <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2514#2515#0" expanded="true" />
+                <element signature="e#2541#2542#0" expanded="true" />
+                <element signature="e#2614#2615#0" expanded="true" />
+                <element signature="e#2655#2656#0" expanded="true" />
+                <element signature="e#2306#2307#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileInspectionData.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/FileInspectionData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractMap.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/AbstractMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-123">
+              <caret line="606" column="24" selection-start-line="606" selection-start-column="24" selection-end-line="606" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Collectors.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/stream/Collectors.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-692">
+              <caret line="228" column="29" selection-start-line="228" selection-start-column="29" selection-end-line="228" selection-end-column="29" />
+              <folding>
+                <element signature="e#4831#4832#0" expanded="true" />
+                <element signature="e#4937#4938#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="teamcitysampleplugin.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/teamcitysampleplugin.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="90" column="61" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
+              <folding>
+                <element signature="n#patternset#0;n#project#0;n#!!top" />
+                <element signature="n#patternset#1;n#project#0;n#!!top" />
+                <element signature="n#patternset#2;n#project#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Severity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/Severity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1008#1009#0" expanded="true" />
+                <element signature="e#1039#1040#0" expanded="true" />
+                <element signature="e#795#796#0" expanded="true" />
+                <element signature="e#823#824#0" expanded="true" />
+                <element signature="e#1489#1490#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="GHPullRequest.class" pinned="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar!/org/kohsuke/github/GHPullRequest.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4097">
-              <caret line="271" column="37" lean-forward="false" selection-start-line="271" selection-start-column="37" selection-end-line="271" selection-end-column="37" />
+            <state relative-caret-position="170">
+              <caret line="184" column="33" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
               <folding>
-                <marker date="1529526869904" expanded="false" signature="0:104" ph="/.../" />
-                <marker date="1529526869904" expanded="false" signature="142:395" ph="..." />
-                <marker date="1529526869904" expanded="true" signature="1195:1202" ph="{}" />
-                <marker date="1529526869904" expanded="true" signature="1249:1322" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="1362:1720" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="1756:1767" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="1867:1873" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="1903:1914" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="1953:1959" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="1989:2000" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2039:2045" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="2083:2094" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2111:2117" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="2155:2166" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2183:2189" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="2195:2213" ph="/**...*/" />
-                <marker date="1529526869904" expanded="true" signature="2285:2329" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="2358:2369" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2407:2413" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="2444:2455" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2495:2501" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="2565:2633" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="2666:2677" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2689:2695" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="2736:2747" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2759:2765" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="2818:2881" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="2937:3006" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="3057:3120" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="3169:3230" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="3281:3341" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="3403:3478" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="3533:3648" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="3699:3762" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="3821:3890" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="3944:4011" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4070:4140" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4189:4278" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4325:4469" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4533:5047" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4595:5040" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4679:5030" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4898:5015" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4974:4997" ph="{}" />
-                <marker date="1529526869904" expanded="true" signature="5109:5927" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="5167:5920" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="5247:5910" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="5460:5895" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="5532:5877" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="6022:6874" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="6087:6867" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="6174:6857" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="6386:6842" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="6465:6824" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="6942:7802" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="7006:7795" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="7092:7785" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="7317:7770" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="7395:7752" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="7808:7826" ph="/**...*/" />
-                <marker date="1529526869904" expanded="true" signature="7989:8068" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="8074:8092" ph="/**...*/" />
-                <marker date="1529526869904" expanded="true" signature="8258:8602" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="8656:8667" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="8711:8717" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="8848:9115" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="9193:9334" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="9389:9435" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="9502:9572" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="9673:9838" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="9889:10082" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="10119:10216" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="10199:10210" ph="{}" />
+                <element signature="e#2359#2360#0" expanded="true" />
+                <element signature="e#2412#2413#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="List.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/List.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7684">
-              <caret line="475" column="28" lean-forward="false" selection-start-line="475" selection-start-column="28" selection-end-line="475" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Comparator.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Comparator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1360">
-              <caret line="108" column="17" lean-forward="false" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SBuild.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/SBuild.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2380">
-              <caret line="175" column="15" lean-forward="false" selection-start-line="175" selection-start-column="15" selection-end-line="175" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SVcsModification.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/vcs/SVcsModification.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2652">
-              <caret line="183" column="55" lean-forward="false" selection-start-line="183" selection-start-column="55" selection-end-line="183" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GHPullRequestReviewBuilder.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar!/org/kohsuke/github/GHPullRequestReviewBuilder.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-              <folding>
-                <marker date="1529526869904" expanded="false" signature="0:104" ph="/.../" />
-                <marker date="1529526869904" expanded="false" signature="142:213" ph="..." />
-                <marker date="1529526869904" expanded="true" signature="478:554" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="620:698" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="756:825" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="903:983" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="1071:1199" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="1260:1449" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="1495:1998" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="1653:1762" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="1795:1810" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="1827:1837" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="1870:1885" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="1902:1912" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="1946:1961" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="1982:1992" ph=" }" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Requester.class" pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar!/org/kohsuke/github/Requester.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
-              <folding>
-                <marker date="1529526869904" expanded="false" signature="0:104" ph="/.../" />
-                <marker date="1529526869904" expanded="false" signature="142:1343" ph="..." />
-                <marker date="1529526869904" expanded="true" signature="1903:1914" ph=" { " />
-                <marker date="1529526869904" expanded="true" signature="1931:1937" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="1991:2002" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2032:2038" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="2099:2164" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="2204:2215" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2254:2260" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="2266:2284" ph="/**...*/" />
-                <marker date="1529526869904" expanded="false" signature="2338:2349" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2361:2367" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="2417:2428" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2458:2464" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="2515:2526" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2556:2562" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="2617:2721" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="2775:2786" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2816:2822" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="2876:2887" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="2917:2923" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="2970:2981" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="3107:3113" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="3166:3177" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="3207:3213" ph=" }" />
-                <marker date="1529526869904" expanded="false" signature="3278:3289" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="3319:3325" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="3397:3679" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="3745:3756" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="3786:3792" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="3849:3903" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="3965:4049" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4104:4232" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4285:4606" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4651:4709" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4764:4832" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4857:4916" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="4975:5024" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="5099:5163" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="5243:5318" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="5324:5342" ph="/**...*/" />
-                <marker date="1529526869904" expanded="true" signature="5447:5511" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="5665:7964" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="8036:8520" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="8592:9068" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="9120:11278" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="11330:11341" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="11379:11385" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="11438:12570" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="12610:12621" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="12690:12696" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="12777:13890" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="13953:14619" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="14696:15996" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="16086:16139" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="16225:18386" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="16225:18403" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="18455:18926" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="18983:18994" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="19053:19059" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="19131:19517" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="19577:21267" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="21320:23795" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="21519:21630" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="21665:21740" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="21766:22008" ph="{...}" />
-                <marker date="1529526869904" expanded="false" signature="22038:22053" ph=" { " />
-                <marker date="1529526869904" expanded="false" signature="22095:22105" ph=" }" />
-                <marker date="1529526869904" expanded="true" signature="22136:23121" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="23187:23789" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="23828:23998" ph="{...}" />
-                <marker date="1529526869904" expanded="true" signature="23921:23992" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Map.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19414">
-              <caret line="1168" column="14" lean-forward="false" selection-start-line="1168" selection-start-column="14" selection-end-line="1168" selection-end-column="14" />
-              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="GithubCommentingBuildFeature.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildFeature.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1751">
-              <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
-              <folding>
-                <element signature="e#5516#5517#0" expanded="true" />
-                <element signature="e#5544#5545#0" expanded="true" />
-                <element signature="e#5850#5851#0" expanded="true" />
-                <element signature="e#5878#5879#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildFeature.java">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -320,6 +176,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -346,11 +203,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -362,10 +214,16 @@
         <option value="$PROJECT_DIR$/src/META-INF/build-server-plugin-samplePlugin.xml" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/teamcity-plugin.xml" />
-        <option value="$PROJECT_DIR$/teamcitysampleplugin.xml" />
         <option value="$PROJECT_DIR$/resources/buildServerResources/editGithubPRCommentingFeatureView.jsp" />
         <option value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildFeature.java" />
         <option value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java" />
+        <option value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/Severity.java" />
+        <option value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/InspectionEntryData.java" />
+        <option value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildServerAdapter.java" />
+        <option value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildFeature.java" />
+        <option value="$PROJECT_DIR$/teamcitysampleplugin.xml" />
+        <option value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/LineInspectionData.java" />
+        <option value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/FileInspectionData.java" />
       </list>
     </option>
   </component>
@@ -387,109 +245,60 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="180" />
-    <option name="y" value="-3" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="y" value="-5" />
+    <option name="width" value="1938" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="unpacked" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="unpacked" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="libs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="buildServerResources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ldtteam" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ldtteam" type="462c0819:PsiDirectoryNode" />
               <item name="teamcity" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="ldtteam" type="462c0819:PsiDirectoryNode" />
@@ -497,21 +306,29 @@
               <item name="github" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Github Commenting" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ldtteam" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity" type="462c0819:PsiDirectoryNode" />
+              <item name="github" type="462c0819:PsiDirectoryNode" />
+              <item name="commenting" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Github Commenting" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="teamcity-github-report" type="b2602c69:ProjectViewProjectNode" />
+              <item name="teamcity-github-report" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="ldtteam" type="462c0819:PsiDirectoryNode" />
+              <item name="teamcity" type="462c0819:PsiDirectoryNode" />
+              <item name="github" type="462c0819:PsiDirectoryNode" />
+              <item name="inspections" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -519,26 +336,28 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="SearchEverywhereHistoryKey" value="Repository&#9;FILE&#9;jar://C:/Users/Marc Hermans/.m2/repository/org/kohsuke/github-api/1.9/github-api-1.9-sources.jar!/org/kohsuke/github/GHRepository.java&#10;SQLRunn&#9;PSI&#9;JAVA://jetbrains.buildServer.serverSide.db.SQLRunnerEx&#10;Inspection&#9;PSI&#9;JAVA://jetbrains.buildServer.serverSide.impl.codeInspection.InspectionInfo" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/jcabi-github-0.39-jar-with-dependencies.jar!/" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/libs/Diffparser.jar!/" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.32319078" />
     <property name="settings.editor.selected.configurable" value="preferences.pathVariables" />
-    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Development\TeamCity\Github Commenting\resources\buildServerResources" />
+      <recent name="E:\Development\TeamCity\Github Commenting\resources\buildServerResources\admin" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Projects\teamcity-github-report\libs" />
       <recent name="E:\Development\TeamCity\Github Commenting\libs" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Development\TeamCity\Github Commenting\resources\buildServerResources" />
-      <recent name="E:\Development\TeamCity\Github Commenting\resources\buildServerResources\admin" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -555,28 +374,14 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HEIGHT" value="0" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <option name="WIDTH" value="0" />
-      <option name="HEIGHT" value="0" />
-      <module />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" />
@@ -586,17 +391,13 @@
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
-      <envs />
       <patterns />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="SUITE_NAME" />
@@ -609,21 +410,15 @@
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="singleModule" />
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
       <option name="PROPERTIES_FILE" />
-      <envs />
       <properties />
       <listeners />
     </configuration>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -644,6 +439,7 @@
       <workItem from="1529499676660" duration="9904000" />
       <workItem from="1529588689092" duration="13489000" />
       <workItem from="1529651145030" duration="1934000" />
+      <workItem from="1529655469088" duration="8207000" />
     </task>
     <task id="LOCAL-00001" summary="Working on UI and getting the libraries to load.">
       <created>1529508734879</created>
@@ -663,48 +459,49 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52225000" />
+    <option name="totallyTimeSpent" value="60432000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-1" width="1936" height="1049" extended-state="6" />
+    <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Tool Output" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39978093" sideWeight="0.33635396" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.4978678" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="TeamCity" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="ANTLR Preview" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39978093" sideWeight="0.66364604" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2867804" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968238" sideWeight="0.4936034" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.33635396" side_tool="true" visible="true" weight="0.3997155" />
+      <window_info anchor="bottom" id="Application Servers" order="10" sideWeight="0.4978678" weight="0.32968238" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="bottom" id="TeamCity" order="11" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" visible="true" weight="0.24949698" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.66364604" weight="0.39978093" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.32968238" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Spring" order="15" weight="0.32968238" />
+      <window_info anchor="bottom" id="Terminal" order="16" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29107982" />
+      <window_info anchor="bottom" id="SonarLint" order="18" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Tool Output" order="8" />
+      <window_info anchor="bottom" id="Messages" order="13" sideWeight="0.4936034" weight="0.32968238" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="19" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="17" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Java Enterprise" order="0" />
+      <window_info anchor="bottom" id="ANTLR Preview" order="12" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -723,20 +520,20 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java</url>
-          <line>162</line>
+          <url>file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildServerAdapter.java</url>
+          <line>150</line>
           <properties />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java</url>
-          <line>157</line>
+          <url>file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildServerAdapter.java</url>
+          <line>145</line>
           <properties />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java</url>
-          <line>204</line>
+          <url>file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildServerAdapter.java</url>
+          <line>192</line>
           <properties />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
@@ -822,74 +619,18 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/build.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/PropertiesProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/InvalidProperty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="31" column="9" lean-forward="false" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server-api.jar!/jetbrains/buildServer/serverSide/BuildFeature.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server.jar!/jetbrains/buildServer/buildFailures/buildLog/BuildFailureOnMessageFeature.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="55" column="18" lean-forward="false" selection-start-line="55" selection-start-column="18" selection-end-line="55" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/BuildFeature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="62" column="16" lean-forward="false" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server.jar!/jetbrains/buildServer/serverSide/impl/VcsLabelingBuildFeature.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server-api.jar!/jetbrains/buildServer/controllers/admin/projects/BuildRunnerBean.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3060">
-          <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/tables.rnc" />
     <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/ParametersDescriptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
-          <caret line="45" column="22" lean-forward="false" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/buildLog/LogMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-85">
-          <caret line="26" column="13" lean-forward="false" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -903,34 +644,21 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/Date.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="130" column="13" lean-forward="false" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server.jar!/jetbrains/buildServer/serverSide/impl/codeInspection/InspectionInfo.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6188">
-          <caret line="393" column="26" lean-forward="false" selection-start-line="393" selection-start-column="26" selection-end-line="393" selection-end-column="26" />
+          <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/buildLog/MessagesState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
-          <caret line="175" column="13" lean-forward="false" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
+          <caret line="175" column="13" selection-start-line="175" selection-start-column="13" selection-end-line="175" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/kohsuke/github-api/1.9/github-api-1.9-sources.jar!/org/kohsuke/github/GHPullRequest.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/kohsuke/github-api/1.9/github-api-1.9-sources.jar!/org/kohsuke/github/GitHub.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/kohsuke/github-api/1.9/github-api-1.9-sources.jar!/org/kohsuke/github/GHRepository.java" />
-    <entry file="file://$PROJECT_DIR$/../../teamcity-github-report/build.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://E:/teamcity-github-report/build.xml" />
     <entry file="jar://$PROJECT_DIR$/libs/jcabi-github-0.39-jar-with-dependencies.jar!/com/jcabi/github/mock/MkGithub.class" />
     <entry file="jar://$PROJECT_DIR$/libs/jcabi-github-0.39-jar-with-dependencies.jar!/com/jcabi/github/Github.class" />
     <entry file="jar://$PROJECT_DIR$/libs/jcabi-github-0.39-jar-with-dependencies.jar!/com/jcabi/github/RtRepos.class" />
@@ -938,51 +666,35 @@
     <entry file="file://$PROJECT_DIR$/teamcity-common.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="421">
-          <caret line="32" column="21" lean-forward="false" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
-          <folding />
+          <caret line="32" column="21" selection-start-line="32" selection-start-column="21" selection-end-line="32" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/META-INF/build-server-plugin-samplePlugin.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/teamcity-plugin.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="87" lean-forward="false" selection-start-line="2" selection-start-column="87" selection-end-line="2" selection-end-column="87" />
-          <folding />
+          <caret line="2" column="87" selection-start-line="2" selection-start-column="87" selection-end-line="2" selection-end-column="87" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
-          <caret line="12" column="49" lean-forward="false" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/teamcitysampleplugin.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="88" column="90" lean-forward="false" selection-start-line="88" selection-start-column="90" selection-end-line="88" selection-end-column="90" />
-          <folding>
-            <element signature="n#patternset#0;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#patternset#1;n#project#0;n#!!top" expanded="false" />
-            <element signature="n#patternset#2;n#project#0;n#!!top" expanded="false" />
-          </folding>
+          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Properties.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6664">
-          <caret line="433" column="0" lean-forward="false" selection-start-line="433" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
+          <caret line="433" selection-start-line="433" selection-end-line="433" />
         </state>
       </provider>
     </entry>
@@ -992,8 +704,7 @@
     <entry file="file://$PROJECT_DIR$/resources/buildServerResources/editGithubPRCommentingFeatureView.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
-          <caret line="47" column="47" lean-forward="false" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
-          <folding />
+          <caret line="47" column="47" selection-start-line="47" selection-start-column="47" selection-end-line="47" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -1004,287 +715,201 @@
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/HashMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
-          <caret line="1253" column="0" lean-forward="false" selection-start-line="1253" selection-start-column="0" selection-end-line="1253" selection-end-column="0" />
+          <caret line="1253" selection-start-line="1253" selection-end-line="1253" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
-          <caret line="1381" column="0" lean-forward="false" selection-start-line="1381" selection-start-column="0" selection-end-line="1381" selection-end-column="0" />
-          <folding />
+          <caret line="1381" selection-start-line="1381" selection-end-line="1381" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/stream/ReferencePipeline.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="174">
-          <caret line="498" column="0" lean-forward="false" selection-start-line="498" selection-start-column="0" selection-end-line="498" selection-end-column="0" />
+          <caret line="498" selection-start-line="498" selection-end-line="498" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/stream/Collectors.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="319">
-          <caret line="131" column="36" lean-forward="false" selection-start-line="131" selection-start-column="36" selection-end-line="131" selection-end-column="36" />
-          <folding>
-            <element signature="e#4831#4832#0" expanded="false" />
-            <element signature="e#4937#4938#0" expanded="false" />
-          </folding>
+          <caret line="131" column="36" selection-start-line="131" selection-start-column="36" selection-end-line="131" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Map.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19414">
-          <caret line="1168" column="14" lean-forward="false" selection-start-line="1168" selection-start-column="14" selection-end-line="1168" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildFeature.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1751">
-          <caret line="140" column="0" lean-forward="false" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
-          <folding>
-            <element signature="e#5516#5517#0" expanded="true" />
-            <element signature="e#5544#5545#0" expanded="true" />
-            <element signature="e#5850#5851#0" expanded="true" />
-            <element signature="e#5878#5879#0" expanded="true" />
-          </folding>
+          <caret line="1168" column="14" selection-start-line="1168" selection-start-column="14" selection-end-line="1168" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/serverSide/SBuild.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2380">
-          <caret line="175" column="15" lean-forward="false" selection-start-line="175" selection-start-column="15" selection-end-line="175" selection-end-column="15" />
-          <folding />
+          <caret line="175" column="15" selection-start-line="175" selection-start-column="15" selection-end-line="175" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$TeamCityDistribution$/devPackage/src/openApi-source.jar!/jetbrains/buildServer/vcs/SVcsModification.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2652">
-          <caret line="183" column="55" lean-forward="false" selection-start-line="183" selection-start-column="55" selection-end-line="183" selection-end-column="55" />
-          <folding />
+          <caret line="183" column="55" selection-start-line="183" selection-start-column="55" selection-end-line="183" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7684">
-          <caret line="475" column="28" lean-forward="false" selection-start-line="475" selection-start-column="28" selection-end-line="475" selection-end-column="28" />
-          <folding />
+          <caret line="475" column="28" selection-start-line="475" selection-start-column="28" selection-end-line="475" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Comparator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1360">
-          <caret line="108" column="17" lean-forward="false" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar!/org/kohsuke/github/GHPullRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4097">
-          <caret line="271" column="37" lean-forward="false" selection-start-line="271" selection-start-column="37" selection-end-line="271" selection-end-column="37" />
-          <folding>
-            <marker date="1529526869904" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1529526869904" expanded="false" signature="142:395" ph="..." />
-            <marker date="1529526869904" expanded="true" signature="1195:1202" ph="{}" />
-            <marker date="1529526869904" expanded="true" signature="1249:1322" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="1362:1720" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="1756:1767" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="1867:1873" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="1903:1914" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="1953:1959" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="1989:2000" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2039:2045" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="2083:2094" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2111:2117" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="2155:2166" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2183:2189" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="2195:2213" ph="/**...*/" />
-            <marker date="1529526869904" expanded="true" signature="2285:2329" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="2358:2369" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2407:2413" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="2444:2455" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2495:2501" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="2565:2633" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="2666:2677" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2689:2695" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="2736:2747" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2759:2765" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="2818:2881" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="2937:3006" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="3057:3120" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="3169:3230" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="3281:3341" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="3403:3478" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="3533:3648" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="3699:3762" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="3821:3890" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="3944:4011" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4070:4140" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4189:4278" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4325:4469" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4533:5047" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4595:5040" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4679:5030" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4898:5015" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4974:4997" ph="{}" />
-            <marker date="1529526869904" expanded="true" signature="5109:5927" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="5167:5920" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="5247:5910" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="5460:5895" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="5532:5877" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="6022:6874" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="6087:6867" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="6174:6857" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="6386:6842" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="6465:6824" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="6942:7802" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="7006:7795" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="7092:7785" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="7317:7770" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="7395:7752" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="7808:7826" ph="/**...*/" />
-            <marker date="1529526869904" expanded="true" signature="7989:8068" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="8074:8092" ph="/**...*/" />
-            <marker date="1529526869904" expanded="true" signature="8258:8602" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="8656:8667" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="8711:8717" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="8848:9115" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="9193:9334" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="9389:9435" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="9502:9572" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="9673:9838" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="9889:10082" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="10119:10216" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="10199:10210" ph="{}" />
-          </folding>
+          <caret line="108" column="17" selection-start-line="108" selection-start-column="17" selection-end-line="108" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar!/org/kohsuke/github/GHPullRequestReviewBuilder.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="18" column="31" lean-forward="false" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding>
-            <marker date="1529526869904" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1529526869904" expanded="false" signature="142:213" ph="..." />
-            <marker date="1529526869904" expanded="true" signature="478:554" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="620:698" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="756:825" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="903:983" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="1071:1199" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="1260:1449" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="1495:1998" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="1653:1762" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="1795:1810" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="1827:1837" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="1870:1885" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="1902:1912" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="1946:1961" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="1982:1992" ph=" }" />
-          </folding>
+          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar!/org/kohsuke/github/Requester.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/sql/ResultSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="236" column="11" selection-start-line="236" selection-start-column="11" selection-end-line="236" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar!/org/kohsuke/github/GHPullRequestFileDetail.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-146">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar!/org/kohsuke/github/GHPullRequest.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="184" column="33" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
           <folding>
-            <marker date="1529526869904" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1529526869904" expanded="false" signature="142:1343" ph="..." />
-            <marker date="1529526869904" expanded="true" signature="1903:1914" ph=" { " />
-            <marker date="1529526869904" expanded="true" signature="1931:1937" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="1991:2002" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2032:2038" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="2099:2164" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="2204:2215" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2254:2260" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="2266:2284" ph="/**...*/" />
-            <marker date="1529526869904" expanded="false" signature="2338:2349" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2361:2367" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="2417:2428" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2458:2464" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="2515:2526" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2556:2562" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="2617:2721" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="2775:2786" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2816:2822" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="2876:2887" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="2917:2923" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="2970:2981" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="3107:3113" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="3166:3177" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="3207:3213" ph=" }" />
-            <marker date="1529526869904" expanded="false" signature="3278:3289" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="3319:3325" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="3397:3679" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="3745:3756" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="3786:3792" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="3849:3903" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="3965:4049" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4104:4232" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4285:4606" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4651:4709" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4764:4832" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4857:4916" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="4975:5024" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="5099:5163" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="5243:5318" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="5324:5342" ph="/**...*/" />
-            <marker date="1529526869904" expanded="true" signature="5447:5511" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="5665:7964" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="8036:8520" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="8592:9068" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="9120:11278" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="11330:11341" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="11379:11385" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="11438:12570" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="12610:12621" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="12690:12696" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="12777:13890" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="13953:14619" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="14696:15996" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="16086:16139" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="16225:18386" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="16225:18403" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="18455:18926" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="18983:18994" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="19053:19059" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="19131:19517" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="19577:21267" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="21320:23795" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="21519:21630" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="21665:21740" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="21766:22008" ph="{...}" />
-            <marker date="1529526869904" expanded="false" signature="22038:22053" ph=" { " />
-            <marker date="1529526869904" expanded="false" signature="22095:22105" ph=" }" />
-            <marker date="1529526869904" expanded="true" signature="22136:23121" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="23187:23789" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="23828:23998" ph="{...}" />
-            <marker date="1529526869904" expanded="true" signature="23921:23992" ph="{...}" />
+            <element signature="e#2359#2360#0" expanded="true" />
+            <element signature="e#2412#2413#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/GithubCommentingBuildServerAdapter.java">
+    <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/Severity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="85" column="82" lean-forward="false" selection-start-line="85" selection-start-column="82" selection-end-line="85" selection-end-column="82" />
+        <state relative-caret-position="289">
+          <caret line="57" column="5" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1008#1009#0" expanded="true" />
+            <element signature="e#1039#1040#0" expanded="true" />
+            <element signature="e#795#796#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#1489#1490#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildFeature.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teamcitysampleplugin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="90" column="61" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
+          <folding>
+            <element signature="n#patternset#0;n#project#0;n#!!top" />
+            <element signature="n#patternset#1;n#project#0;n#!!top" />
+            <element signature="n#patternset#2;n#project#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/server.jar!/jetbrains/buildServer/serverSide/impl/codeInspection/InspectionInfo.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="393" column="26" selection-start-line="393" selection-start-column="26" selection-end-line="393" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/commenting/GithubCommentingBuildServerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3499">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1822#1823#0" expanded="true" />
             <element signature="e#1859#1860#0" expanded="true" />
             <element signature="e#1893#1894#0" expanded="true" />
             <element signature="e#1933#1934#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/InspectionEntryData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/stream/Collectors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-692">
+          <caret line="228" column="29" selection-start-line="228" selection-start-column="29" selection-end-line="228" selection-end-column="29" />
+          <folding>
+            <element signature="e#4831#4832#0" expanded="true" />
+            <element signature="e#4937#4938#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/src.zip!/java/util/AbstractMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-123">
+          <caret line="606" column="24" selection-start-line="606" selection-start-column="24" selection-end-line="606" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/LineInspectionData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2514#2515#0" expanded="true" />
+            <element signature="e#2541#2542#0" expanded="true" />
+            <element signature="e#2614#2615#0" expanded="true" />
+            <element signature="e#2655#2656#0" expanded="true" />
+            <element signature="e#2306#2307#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/ldtteam/teamcity/github/inspections/FileInspectionData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
