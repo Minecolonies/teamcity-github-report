@@ -24,11 +24,13 @@ import jetbrains.buildServer.serverSide.buildLog.MessageAttrs;
 import jetbrains.buildServer.serverSide.db.SQLRunnerEx;
 import jetbrains.buildServer.serverSide.impl.codeInspection.InspectionInfo;
 import jetbrains.buildServer.vcs.FilteredVcsChange;
+import jetbrains.buildServer.vcs.SVcsModification;
 import jetbrains.buildServer.vcs.SelectPrevBuildPolicy;
 import jetbrains.buildServer.vcs.VcsChange;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kohsuke.github.GHPullRequestReviewBuilder;
+import org.kohsuke.github.GHPullRequestReviewEvent;
 import org.kohsuke.github.GitHub;
 import org.kohsuke.github.GitHubBuilder;
 
@@ -77,17 +79,33 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                                                                       .collect(
                                                                         Collectors.toMap(
                                                                           VcsChange::getRelativeFileName,
-                                                                          filteredVcsChange -> inspectionIdsWithName
-                                                                                                 .keySet()
-                                                                                                 .stream()
-                                                                                                 .collect(
-                                                                                                   Collectors.toMap(
-                                                                                                     Function.identity(),
-                                                                                                     //Line - Inspection info - R Count - Severity
-                                                                                                     aLong -> info.getDetails(aLong, filteredVcsChange.getFileName(), false)
-                                                                                                   )
-                                                                                                 )
-                                                                        )
+                                                                          filteredVcsChange -> {
+                                                                              Map<Long, List<String[]>> data = inspectionIdsWithName
+                                                                                .keySet()
+                                                                                .stream()
+                                                                                .collect(
+                                                                                  Collectors.toMap(
+                                                                                    Function.identity(),
+                                                                                    //Line - FQName - Message - Severity
+                                                                                    aLong -> info.getDetails(aLong, filteredVcsChange.getFileName(), false)
+                                                                                  )
+                                                                                ,
+                                                                                (inspectionsFromFileOne, inspectionsFromFileTwo) -> {
+                                                                                    inspectionsFromFileTwo.keySet().forEach(inspectionId -> {
+                                                                                        inspectionsFromFileOne.merge(
+                                                                                          inspectionId,
+                                                                                          inspectionsFromFileTwo.get(inspectionId),
+                                                                                          (inspectionDataFromFileTwo, inspectionDataFromFileOne) -> {
+                                                                                              inspectionDataFromFileTwo.addAll(inspectionDataFromFileOne);
+                                                                                              return new ArrayList<>(new HashSet<>(inspectionDataFromFileTwo));
+                                                                                          });
+                                                                                    });
+
+                                                                                    return inspectionsFromFileOne;
+                                                                                });
+
+                                                                              return data;
+                                                                          })
                                                                       );
 
 
@@ -113,7 +131,7 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                           .get(inspectionId)
                           .stream()
                           .forEach(inspectionFileData -> {
-                              runningBuild.getBuildLog().message(inspectionFileData[1] + " On line: " + inspectionFileData[0] + " with severity: " + inspectionFileData[3], Integer.parseInt(inspectionFileData[3]) < 3 ? Status.WARNING :
+                              runningBuild.getBuildLog().message(inspectionFileData[2] + " On line: " + inspectionFileData[0] + " with severity: " + inspectionFileData[3], Integer.parseInt(inspectionFileData[3]) < 3 ? Status.WARNING :
                                 Status.NORMAL, MessageAttrs.serverMessage());
                           });
 
@@ -150,6 +168,41 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                     }
 
                     final GHPullRequestReviewBuilder builder = github.getRepository(repo).getPullRequest(pullId).createReview();
+
+                    fileData
+                      .keySet()
+                      .stream()
+                      .forEach(fileName-> {
+                          fileData
+                            .get(fileName)
+                            .keySet()
+                            .stream()
+                            .filter(inspectionId -> !fileData.get(fileName).get(inspectionId).isEmpty())
+                            .forEach(inspectionId -> {
+                                fileData
+                                  .get(fileName)
+                                  .get(inspectionId)
+                                  .stream()
+                                  .forEach(inspectionFileData -> {
+                                      builder.comment(inspectionFileData[2], fileName, Integer.parseInt(inspectionFileData[0]));
+                                  });
+                            });
+                      });
+
+
+                    builder.body("Analysis completed. \r\n   Found a total of: " + statistics[0] + " (" + (statistics[1]-statistics[2]) + ") inspections marked in the branch. \r\n   With a total of " + statistics[3] + " (" + (statistics[4]-statistics[5] + ") errors."));
+                    if ((statistics[4]-statistics[5]) > 0)
+                    {
+                        builder.event(GHPullRequestReviewEvent.REQUEST_CHANGES);
+                    }
+                    else
+                    {
+                        builder.event(GHPullRequestReviewEvent.APPROVE);
+                    }
+
+                    builder.create();
+
+                    System.out.println("Successfully created data.");
                 }
                 catch (Exception e)
                 {
