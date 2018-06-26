@@ -2,14 +2,14 @@
 <teamcity-plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:noNamespaceSchemaLocation="urn:shemas-jetbrains-com:teamcity-plugin-v1-xml">
   <info>
-    <name>samplePlugin</name>
-    <display-name>samplePlugin</display-name>
-    <version>SNAPSHOT-201806212038</version>
-    <description>What your plugin does?</description>
+    <name>GithubPRCommenting</name>
+    <display-name>Github PR Commenting</display-name>
+    <version>SNAPSHOT-201806251853</version>
+    <description>Enables commenting of inspection results on Github PRs?</description>
 
     <vendor>
-      <name>Your company/name</name>
-      <url>http://enter.your.url.com</url>
+      <name>LDTTeam</name>
+      <url>https://www.minecolonies.com</url>
     </vendor>
   </info>
 </teamcity-plugin>

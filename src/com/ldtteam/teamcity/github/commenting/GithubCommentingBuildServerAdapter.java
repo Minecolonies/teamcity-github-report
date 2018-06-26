@@ -1,6 +1,8 @@
 package com.ldtteam.teamcity.github.commenting;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.ldtteam.teamcity.github.inspections.FileInspectionData;
 import jetbrains.buildServer.messages.Status;
 import jetbrains.buildServer.serverSide.*;
 import jetbrains.buildServer.serverSide.buildLog.BlockLogMessage;
@@ -8,15 +10,17 @@ import jetbrains.buildServer.serverSide.buildLog.MessageAttrs;
 import jetbrains.buildServer.serverSide.db.SQLRunnerEx;
 import jetbrains.buildServer.serverSide.impl.codeInspection.InspectionInfo;
 import jetbrains.buildServer.vcs.FilteredVcsChange;
+import jetbrains.buildServer.vcs.SVcsModification;
 import jetbrains.buildServer.vcs.SelectPrevBuildPolicy;
-import jetbrains.buildServer.vcs.VcsChange;
+import net.steppschuh.markdowngenerator.table.Table;
+import net.steppschuh.markdowngenerator.text.heading.Heading;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kohsuke.github.*;
 
+import java.io.IOException;
 import java.time.Instant;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
@@ -37,158 +41,175 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
     @Override
     public void beforeBuildFinish(@NotNull final SRunningBuild runningBuild)
     {
+        processFinishedBuild(runningBuild);
+    }
+
+    private void processFinishedBuild(@NotNull final SRunningBuild runningBuild)
+    {
         final Optional<SBuildFeatureDescriptor> commentingBuildFeature = runningBuild.getBuildFeaturesOfType(GithubCommentingBuildFeature.class.getName()).stream().findFirst();
 
-        if (commentingBuildFeature.isPresent())
+        if (!commentingBuildFeature.isPresent())
         {
-            final InspectionInfo info = getInspectionInfo(runningBuild);
-            //Total - New Total - Old Total - Errors - New Errors - Old Errors
-            final int[] statistics = info.getStatistics();
-            final List<String[]> inspectionData = info.getInspections();
-            final Map<Long, String> inspectionIdsWithName =
-              inspectionData.stream().filter(data -> Integer.parseInt(data[6]) >= 0).collect(Collectors.toMap(data -> Long.parseLong(data[2]), data -> data[3]));
+            return;
+        }
 
-            final List<FilteredVcsChange> changedFiles = runningBuild
-                                                           .getChanges(SelectPrevBuildPolicy.SINCE_LAST_COMPLETE_BUILD, false)
-                                                           .stream()
-                                                           .flatMap(vcs -> vcs.getFilteredChanges(runningBuild).stream())
-                                                           .collect(Collectors.toList());
+        final BlockLogMessage openGithubCommentingBlock = runningBuild.getBuildLog().openBlock("Github PR Commenting", getClass().getName(), MessageAttrs.serverMessage());
 
-            final Map<String, Map<Long, List<String[]>>> fileData = changedFiles
-                                                                      .stream()
-                                                                      .collect(
-                                                                        Collectors.toMap(
-                                                                          VcsChange::getRelativeFileName,
-                                                                          filteredVcsChange -> {
-                                                                              Map<Long, List<String[]>> data = inspectionIdsWithName
-                                                                                .keySet()
-                                                                                .stream()
-                                                                                .collect(
-                                                                                  Collectors.toMap(
-                                                                                    Function.identity(),
-                                                                                    //Line - FQName - Message - Severity
-                                                                                    aLong -> info.getDetails(aLong, filteredVcsChange.getFileName(), false),
-                                                                                    this::mergeFileData
-                                                                                  )
-                                                                                );
+        final SBuildFeatureDescriptor featureDescriptor = commentingBuildFeature.get();
+        final Map<String, String> parameters = featureDescriptor.getParameters();
 
-                                                                              return data;
-                                                                          })
-                                                                      );
+        final String username = parameters.get("username");
+        final String token = parameters.get("token");
+        final String password = parameters.get("password");
+        final String url = runningBuild.getVcsRootEntries().get(0).getProperties().get("url");
+        final String[] urlParts = url.split("/");
+        final String repoName = urlParts[urlParts.length - 2] + "/" + urlParts[urlParts.length - 1].replace(".git", "");
 
-
-            final BlockLogMessage openGithubCommentingBlock = runningBuild.getBuildLog().openBlock("Github PR Commenting", getClass().getName(), MessageAttrs.serverMessage());
-
-            runningBuild.getBuildLog().message("Discovered Inspections:", Status.NORMAL, MessageAttrs.serverMessage());
-            fileData
-              .keySet()
-              .stream()
-              .forEach(fileName-> {
-                  final BlockLogMessage openFileBlockMessage = runningBuild.getBuildLog().openBlock(fileName, getClass().getName() + "_file", MessageAttrs.serverMessage());
-
-                  fileData
-                    .get(fileName)
-                    .keySet()
-                    .stream()
-                    .filter(inspectionId -> !fileData.get(fileName).get(inspectionId).isEmpty())
-                    .forEach(inspectionId -> {
-                        final BlockLogMessage openFileInspectionBlockMessage = runningBuild.getBuildLog().openBlock(inspectionIdsWithName.get(inspectionId), getClass().getName() + "_file_inspection", MessageAttrs.serverMessage());
-
-                        fileData
-                          .get(fileName)
-                          .get(inspectionId)
-                          .stream()
-                          .forEach(inspectionFileData -> {
-                              runningBuild.getBuildLog().message(inspectionFileData[2] + " On line: " + inspectionFileData[0] + " with severity: " + inspectionFileData[3], Integer.parseInt(inspectionFileData[3]) < 3 ? Status.WARNING :
-                                Status.NORMAL, MessageAttrs.serverMessage());
-                          });
-
-                        runningBuild.getBuildLog().closeBlock(inspectionIdsWithName.get(inspectionId), getClass().getName() + "_file_inspection", Date.from(Instant.now()), String.valueOf(openFileInspectionBlockMessage.getFlowId()));
-                    });
-
-                  runningBuild.getBuildLog().closeBlock(fileName, getClass().getName() + "_file", Date.from(Instant.now()), String.valueOf(openFileBlockMessage.getFlowId()));
-              });
-
-            runningBuild.getBuildLog().message("Starting Github upload.", Status.NORMAL, MessageAttrs.serverMessage());
-
-            final SBuildFeatureDescriptor featureDescriptor = commentingBuildFeature.get();
-            final Map<String, String> parameters = featureDescriptor.getParameters();
-
-            final String username = parameters.get("username");
-            final String token = parameters.get("token");
-            final String password = parameters.get("password");
-            final String url = runningBuild.getVcsRootEntries().get(0).getProperties().get("url");
-            final String[] urlParts = url.split("/");
-            final String repoName = urlParts[urlParts.length - 2] + "/" + urlParts[urlParts.length - 1].replace(".git", "");
+        try
+        {
+            final Integer pullId = Integer.parseInt(parameters.get("branch"));
 
             try
             {
-                final Integer pullId = Integer.parseInt(parameters.get("branch"));
 
-                try
+                final GitHub github = new GitHubBuilder().withOAuthToken(token, username).withPassword(username, password).build();
+
+                if (!github.isCredentialValid())
                 {
-
-                    final GitHub github = new GitHubBuilder().withOAuthToken(token, username).withPassword(username, password).build();
-
-                    if (!github.isCredentialValid())
-                    {
-                        throw new IllegalAccessException("Could not authenticate configured user against GitHub.");
-                    }
-
-                    final GHRepository repo = github.getRepository(repoName);
-                    final GHPullRequest request = repo.getPullRequest(pullId);
-                    request.getDiffUrl()
-
-                    final GHPullRequestReviewBuilder builder = github.getRepository(repo).getPullRequest(pullId).createReview();
-
-                    fileData
-                      .keySet()
-                      .stream()
-                      .forEach(fileName-> {
-                          fileData
-                            .get(fileName)
-                            .keySet()
-                            .stream()
-                            .filter(inspectionId -> !fileData.get(fileName).get(inspectionId).isEmpty())
-                            .forEach(inspectionId -> {
-                                fileData
-                                  .get(fileName)
-                                  .get(inspectionId)
-                                  .stream()
-                                  .forEach(inspectionFileData -> {
-                                      builder.comment(inspectionFileData[2], fileName, Integer.parseInt(inspectionFileData[0]));
-                                  });
-                            });
-                      });
-
-
-                    builder.body("Analysis completed. \r\n   Found a total of: " + statistics[0] + " (" + (statistics[1]-statistics[2]) + ") inspections marked in the branch. \r\n   With a total of " + statistics[3] + " (" + (statistics[4]-statistics[5] + ") errors."));
-                    if ((statistics[4]-statistics[5]) > 0)
-                    {
-                        builder.event(GHPullRequestReviewEvent.REQUEST_CHANGES);
-                    }
-                    else
-                    {
-                        builder.event(GHPullRequestReviewEvent.APPROVE);
-                    }
-
-                    builder.create();
-
-                    System.out.println("Successfully created data.");
-                }
-                catch (Exception e)
-                {
-                    runningBuild.getBuildLog().error("FAILURE", e.getLocalizedMessage(), Date.from(Instant.now()), e.getLocalizedMessage(), String.valueOf(openGithubCommentingBlock.getFlowId()),
-                      ImmutableList.of());
+                    throw new IllegalAccessException("Could not authenticate configured user against GitHub.");
                 }
 
-            } catch (NumberFormatException nfe)
+                final GHRepository repo = github.getRepository(repoName);
+                final GHPullRequest request = repo.getPullRequest(pullId);
+
+                dismissLastPullRequestReview(request, username);
+
+                final GHPullRequestReviewBuilder builder = github.getRepository(repoName).getPullRequest(pullId).createReview();
+
+                final List<SBuild> activeBuilds =
+                  runningBuild
+                    .getBuildPromotion()
+                    .getAllDependencies()
+                    .stream()
+                    .filter(p -> p.getAssociatedBuild() != null)
+                    .map(BuildPromotion::getAssociatedBuild).collect(Collectors.toList());
+                activeBuilds.add(runningBuild);
+
+                final List<InspectionInfo> activeInfos =
+                  activeBuilds
+                    .stream()
+                    .map(this::getInspectionInfo)
+                    .collect(Collectors.toList());
+
+                final List<List<String[]>> inspectionIds =
+                  activeInfos
+                    .stream()
+                    .map(InspectionInfo::getInspections)
+                    .collect(Collectors.toList());
+
+                final Map<Long, String> idNameMap =
+                  inspectionIds
+                    .stream()
+                    .flatMap(Collection::stream)
+                    .filter(data -> Integer.parseInt(data[6]) > 0)
+                    .distinct()
+                    .collect(Collectors.toMap(
+                      data -> Long.parseLong(data[2]),
+                      data -> data[3],
+                      (nameOne, nameTwo) -> nameOne
+                    ));
+
+                final Collection<String> changedFiles = getChangesForBuild(runningBuild, activeBuilds);
+
+                changedFiles.stream().forEach(file -> {
+                    final FileInspectionData fileInspectionData = new FileInspectionData(file, activeInfos, idNameMap.keySet(), request);
+                    fileInspectionData.process(builder);
+                });
+
+                final StringBuilder bodyBuilder = new StringBuilder()
+                                                    .append(new Heading("Analysis Complete", 4)).append("\n")
+                                                    .append(new Heading("Statisc", 5)).append("\n")
+                                                    .append(createStatisticContent(activeInfos).build());
+
+                builder.body(bodyBuilder.toString());
+
+                builder.create();
+            }
+            catch (Exception e)
             {
-                runningBuild.getBuildLog().message("Cannot upload comments to Github. Branch is not a number.", Status.ERROR, MessageAttrs.serverMessage());
+                runningBuild.getBuildLog()
+                  .error("FAILURE", e.getMessage(), Date.from(Instant.now()), e.getLocalizedMessage(), String.valueOf(openGithubCommentingBlock.getFlowId()),
+                    ImmutableList.of());
+            }
+        }
+        catch (NumberFormatException nfe)
+        {
+            runningBuild.getBuildLog().message("Cannot upload comments to Github. Branch is not a number.", Status.ERROR, MessageAttrs.serverMessage());
+        }
+
+        runningBuild.getBuildLog().closeBlock("Github PR Commenting", getClass().getName(), Date.from(Instant.now()), String.valueOf(openGithubCommentingBlock.getFlowId()));
+    }
+
+    private void dismissLastPullRequestReview(final GHPullRequest request, final String actingUserName)
+    {
+        request.listReviews().asList().stream().filter(r -> !r.getState().equals(GHPullRequestReviewState.DISMISSED)).filter(r -> {
+            try
+            {
+                return r.getUser().getName().equals(actingUserName);
+            }
+            catch (IOException e)
+            {
+                //Noop- We do not care, if we can not get the user we can not dismiss it either.
             }
 
-            runningBuild.getBuildLog().closeBlock("Github PR Commenting", getClass().getName(), Date.from(Instant.now()), String.valueOf(openGithubCommentingBlock.getFlowId()));
+            return false;
+        }).forEach(r -> {
+            try
+            {
+                r.dismiss("A new analysis is being ran. Please wait for the results.");
+            }
+            catch (IOException e)
+            {
+                //Noop - We do not care, if we can not dismiss the review.
+            }
+        });
+    }
+
+    private Collection<String> getChangesForBuild(final SBuild targetBuild, final Collection<SBuild> buildGraph)
+    {
+        final List<SVcsModification> currentBuildChanges = targetBuild.getChanges(SelectPrevBuildPolicy.SINCE_NULL_BUILD, true);
+
+        if (targetBuild.getBuildPromotion().getPreviousBuildPromotion(SelectPrevBuildPolicy.SINCE_LAST_COMPLETE_BUILD) == null)
+        {
+            return getFilteredChangesForBuilds(currentBuildChanges, buildGraph);
         }
+
+        final List<SVcsModification> previousBuildChanges =
+          targetBuild.getBuildPromotion().getPreviousBuildPromotion(SelectPrevBuildPolicy.SINCE_LAST_COMPLETE_BUILD).getChanges(SelectPrevBuildPolicy.SINCE_NULL_BUILD, true);
+
+
+        return getFilteredChangesForBuilds(currentBuildChanges
+                 .stream()
+                 .filter(c -> !previousBuildChanges.contains(c))
+                 .collect(Collectors.toList()), buildGraph);
+    }
+
+    private Collection<String> getFilteredChangesForBuilds(final Collection<SVcsModification> modifications, final Collection<SBuild> builds)
+    {
+        return modifications
+          .stream()
+          .flatMap(
+            sVcsModification -> {
+                final Collection<FilteredVcsChange> change = Lists.newArrayList();
+                builds.forEach(build -> {
+                    change.addAll(sVcsModification.getFilteredChanges(build));
+                });
+                return change.stream();
+            }
+          )
+                 .map(FilteredVcsChange::getRelativeFileName)
+          .distinct()
+          .collect(Collectors.toList());
     }
 
     @Nullable
@@ -198,24 +219,37 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
         return buildType == null ? null : new InspectionInfo((SQLRunnerEx) server.getSQLRunner(), build);
     }
 
-    private final List
-
-    private final List<String[]> mergeFileData(List<String[]> fileOneData, List<String[]> fileTwoData)
+    private final Table.Builder createStatisticContent(final Collection<InspectionInfo> inspectionInfos)
     {
-        final List<String[]> result = new ArrayList<>();
+        final Collection<int[]> statisticsPerInfo = inspectionInfos
+                                                      .stream()
+                                                      .map(InspectionInfo::getStatistics)
+                                                      .collect(Collectors.toList());
 
+        final int[] statisticsTotal = statisticsPerInfo
+                                        .stream()
+                                        .reduce(
+                                          new int[6],
+                                          (one, two) -> {
+                                              if (one == null)
+                                                  return two == null ? new int[6] : two;
 
+                                              if (two == null)
+                                                  return one;
 
-        inspectionsFromFileTwo.keySet().forEach(inspectionId -> {
-            inspectionsFromFileOne.merge(
-              inspectionId,
-              inspectionsFromFileTwo.get(inspectionId),
-              (inspectionDataFromFileTwo, inspectionDataFromFileOne) -> {
-                  inspectionDataFromFileTwo.addAll(inspectionDataFromFileOne);
-                  return new ArrayList<>(new HashSet<>(inspectionDataFromFileTwo));
-              });
-        });
+                                              return new int[] {one[0] + two[0], one[1] + two[1], one[2] + two[2], one[3] + two[3], one[4] + two[4], one[5] + two[5]};
+                                          }
+                                        );
 
-        return inspectionsFromFileOne;
+        final int diffTotal = statisticsTotal[1] - statisticsTotal[2];
+        final int diffErrors = statisticsTotal[4] - statisticsTotal[5];
+
+        final Table.Builder builder = new Table.Builder()
+                                        .withAlignments(Table.ALIGN_LEFT, Table.ALIGN_CENTER, Table.ALIGN_CENTER, Table.ALIGN_CENTER)
+                                        .addRow("", "Count", "New", "Old", "Diff")
+                                        .addRow("Total", statisticsTotal[0], statisticsTotal[1], statisticsTotal[2], String.format("%s%d", diffTotal > 0 ? "+" : "", diffTotal))
+                                        .addRow("Errors", statisticsTotal[3], statisticsTotal[4], statisticsTotal[5], String.format("%s%d", diffTotal > 0 ? "+" : "", diffErrors));
+
+        return builder;
     }
 }

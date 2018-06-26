@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="TeamCitySamplePlugin" default="dist">
+<project name="GithubPRCommenting" default="dist">
 
   <property file="build.properties"/>
-  <property name="plugin.name" value="samplePlugin"/>
+  <property name="plugin.name" value="GithubPRCommenting"/>
   <property name="javac2.home" value="${basedir}/lib-compile"/>
 
   <import file="teamcity-common.xml"/>

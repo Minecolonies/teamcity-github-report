@@ -4,6 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
        default-autowire="constructor">
 
-    <bean id="githubCommentingBuildFeature" class="com.ldtteam.teamcity.github.GithubCommentingBuildFeature" init-method="register" />
-    <bean id="githubCommentingBuildServerAdapter" class="com.ldtteam.teamcity.github.GithubCommentingBuildServerAdapter" init-method="register" />
+    <bean id="githubCommentingBuildFeature" class="com.ldtteam.teamcity.github.commenting.GithubCommentingBuildFeature" init-method="register" />
+    <bean id="githubCommentingBuildServerAdapter" class="com.ldtteam.teamcity.github.commenting.GithubCommentingBuildServerAdapter" init-method="register" />
 </beans>

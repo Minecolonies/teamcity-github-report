@@ -21,7 +21,7 @@ public final class LineInspectionData
 
         this.line = entryData.stream().map(InspectionEntryData::getLineNumber).findFirst().orElseThrow(() ->new IllegalStateException("Argument check failed"));
         this.raw = entryData;
-        this.resultsForSeverity = new EnumMap<>(entryData
+        this.resultsForSeverity = new EnumMap<Severity, Set<String>>(entryData
                                                   .stream()
                                                   .collect(
                                                     Collectors.toMap(
@@ -67,7 +67,7 @@ public final class LineInspectionData
         for (Severity severity : this.resultsForSeverity.keySet())
         {
             if (builder.toString() != "")
-                builder = builder.append("\n");
+                builder = builder.append("\n").append("\n");
 
             final Set<String> results = resultsForSeverity.get(severity);
             builder = builder.append(new Heading(severity.getHeader() +  ":", 3)).append("\n");

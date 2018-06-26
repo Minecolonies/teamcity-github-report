@@ -8,8 +8,8 @@
       <root url="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/spring-webmvc.jar!/" />
       <root url="jar://$TeamCityDistribution$/webapps/ROOT/WEB-INF/lib/jdom.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/github-api-1.94-SNAPSHOT-jar-with-dependencies.jar!/" />
-      <root url="jar://$PROJECT_DIR$/libs/Markdown-generator-1.3.1.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/Diffparser.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/Markdown-generator-1.3.1.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
