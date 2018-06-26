@@ -126,13 +126,17 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                     fileInspectionData.process(builder);
                 });
 
+                final int[] statisticsTotal = getStatistics(activeInfos);
+                final int diffErrors = statisticsTotal[4] - statisticsTotal[5];
+
                 final StringBuilder bodyBuilder = new StringBuilder()
                                                     .append(new Heading("Analysis Complete", 4)).append("\n")
-                                                    .append(new Heading("Statisc", 5)).append("\n")
-                                                    .append(createStatisticContent(activeInfos).build());
+                                                    .append(new Heading("Statistics", 5)).append("\n")
+                                                    .append(createStatisticContent(statisticsTotal).build());
 
                 builder.body(bodyBuilder.toString());
 
+                builder.event(diffErrors < 0 ? GHPullRequestReviewEvent.REQUEST_CHANGES : GHPullRequestReviewEvent.APPROVE);
                 builder.create();
             }
             catch (Exception e)
@@ -219,14 +223,28 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
         return buildType == null ? null : new InspectionInfo((SQLRunnerEx) server.getSQLRunner(), build);
     }
 
-    private final Table.Builder createStatisticContent(final Collection<InspectionInfo> inspectionInfos)
+    private final Table.Builder createStatisticContent(final int[] statisticsTotal)
+    {
+        final int diffTotal = statisticsTotal[1] - statisticsTotal[2];
+        final int diffErrors = statisticsTotal[4] - statisticsTotal[5];
+
+        final Table.Builder builder = new Table.Builder()
+                                        .withAlignments(Table.ALIGN_LEFT, Table.ALIGN_CENTER, Table.ALIGN_CENTER, Table.ALIGN_CENTER)
+                                        .addRow("", "Count", "New", "Old", "Diff")
+                                        .addRow("Total", statisticsTotal[0], statisticsTotal[1], statisticsTotal[2], String.format("%s%d", diffTotal > 0 ? "+" : "", diffTotal))
+                                        .addRow("Errors", statisticsTotal[3], statisticsTotal[4], statisticsTotal[5], String.format("%s%d", diffTotal > 0 ? "+" : "", diffErrors));
+
+        return builder;
+    }
+
+    private int[] getStatistics(final Collection<InspectionInfo> inspectionInfos)
     {
         final Collection<int[]> statisticsPerInfo = inspectionInfos
                                                       .stream()
                                                       .map(InspectionInfo::getStatistics)
                                                       .collect(Collectors.toList());
 
-        final int[] statisticsTotal = statisticsPerInfo
+        return statisticsPerInfo
                                         .stream()
                                         .reduce(
                                           new int[6],
@@ -240,16 +258,5 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                                               return new int[] {one[0] + two[0], one[1] + two[1], one[2] + two[2], one[3] + two[3], one[4] + two[4], one[5] + two[5]};
                                           }
                                         );
-
-        final int diffTotal = statisticsTotal[1] - statisticsTotal[2];
-        final int diffErrors = statisticsTotal[4] - statisticsTotal[5];
-
-        final Table.Builder builder = new Table.Builder()
-                                        .withAlignments(Table.ALIGN_LEFT, Table.ALIGN_CENTER, Table.ALIGN_CENTER, Table.ALIGN_CENTER)
-                                        .addRow("", "Count", "New", "Old", "Diff")
-                                        .addRow("Total", statisticsTotal[0], statisticsTotal[1], statisticsTotal[2], String.format("%s%d", diffTotal > 0 ? "+" : "", diffTotal))
-                                        .addRow("Errors", statisticsTotal[3], statisticsTotal[4], statisticsTotal[5], String.format("%s%d", diffTotal > 0 ? "+" : "", diffErrors));
-
-        return builder;
     }
 }
