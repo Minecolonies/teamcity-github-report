@@ -39,6 +39,62 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
     }
 
     @Override
+    public void buildStarted(@NotNull final SRunningBuild build)
+    {
+        final Optional<SBuildFeatureDescriptor> commentingBuildFeature = build.getBuildFeaturesOfType(GithubCommentingBuildFeature.class.getName()).stream().findFirst();
+
+        if (!commentingBuildFeature.isPresent())
+        {
+            return;
+        }
+
+        final BlockLogMessage openGithubCommentingBlock = build.getBuildLog().openBlock("Github PR Commenting - Dismissing existing review", getClass().getName() + "-Dismiss", MessageAttrs.serverMessage());
+
+        final SBuildFeatureDescriptor featureDescriptor = commentingBuildFeature.get();
+        final Map<String, String> parameters = featureDescriptor.getParameters();
+
+        final String username = parameters.get("username");
+        final String token = parameters.get("token");
+        final String password = parameters.get("password");
+        final String url = build.getVcsRootEntries().get(0).getProperties().get("url");
+        final String[] urlParts = url.split("/");
+        final String repoName = urlParts[urlParts.length - 2] + "/" + urlParts[urlParts.length - 1].replace(".git", "");
+
+        try
+        {
+            final Integer pullId = Integer.parseInt(parameters.get("branch"));
+
+            try
+            {
+
+                final GitHub github = new GitHubBuilder().withOAuthToken(token, username).withPassword(username, password).build();
+
+                if (!github.isCredentialValid())
+                {
+                    throw new IllegalAccessException("Could not authenticate configured user against GitHub.");
+                }
+
+                final GHRepository repo = github.getRepository(repoName);
+                final GHPullRequest request = repo.getPullRequest(pullId);
+
+                dismissLastPullRequestReview(request, username);
+           }
+            catch (Exception e)
+            {
+                build.getBuildLog()
+                  .error("FAILURE", e.getMessage(), Date.from(Instant.now()), e.getLocalizedMessage(), String.valueOf(openGithubCommentingBlock.getFlowId()),
+                    ImmutableList.of());
+            }
+        }
+        catch (NumberFormatException nfe)
+        {
+            build.getBuildLog().message("Cannot upload comments to Github. Branch is not a number.", Status.ERROR, MessageAttrs.serverMessage());
+        }
+
+        build.getBuildLog().closeBlock("Github PR Commenting - Dismissing existing review", getClass().getName() + "-Dismiss", Date.from(Instant.now()), String.valueOf(openGithubCommentingBlock.getFlowId()));
+    }
+
+    @Override
     public void beforeBuildFinish(@NotNull final SRunningBuild runningBuild)
     {
         processFinishedBuild(runningBuild);
