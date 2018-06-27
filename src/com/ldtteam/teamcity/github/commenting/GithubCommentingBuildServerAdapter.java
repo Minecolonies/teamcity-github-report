@@ -12,6 +12,8 @@ import jetbrains.buildServer.serverSide.impl.codeInspection.InspectionInfo;
 import jetbrains.buildServer.vcs.FilteredVcsChange;
 import jetbrains.buildServer.vcs.SVcsModification;
 import jetbrains.buildServer.vcs.SelectPrevBuildPolicy;
+import net.steppschuh.markdowngenerator.link.Link;
+import net.steppschuh.markdowngenerator.list.UnorderedList;
 import net.steppschuh.markdowngenerator.table.Table;
 import net.steppschuh.markdowngenerator.text.heading.Heading;
 import org.jetbrains.annotations.NotNull;
@@ -25,6 +27,8 @@ import java.util.stream.Collectors;
 
 public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
 {
+
+    private static final String INSPECTION_URL_PATTERN = "https://teamcity.minecolonies.com/viewLog.html?buildId=%d&tab=Inspection&buildTypeId=%s";
 
     private final SBuildServer server;
 
@@ -48,7 +52,8 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
             return;
         }
 
-        final BlockLogMessage openGithubCommentingBlock = build.getBuildLog().openBlock("Github PR Commenting - Dismissing existing review", getClass().getName() + "-Dismiss", MessageAttrs.serverMessage());
+        final BlockLogMessage openGithubCommentingBlock =
+          build.getBuildLog().openBlock("Github PR Commenting - Dismissing existing review", getClass().getName() + "-Dismiss", MessageAttrs.serverMessage());
 
         final SBuildFeatureDescriptor featureDescriptor = commentingBuildFeature.get();
         final Map<String, String> parameters = featureDescriptor.getParameters();
@@ -78,7 +83,7 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                 final GHPullRequest request = repo.getPullRequest(pullId);
 
                 dismissLastPullRequestReview(request, username);
-           }
+            }
             catch (Exception e)
             {
                 build.getBuildLog()
@@ -91,7 +96,11 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
             build.getBuildLog().message("Cannot upload comments to Github. Branch is not a number.", Status.ERROR, MessageAttrs.serverMessage());
         }
 
-        build.getBuildLog().closeBlock("Github PR Commenting - Dismissing existing review", getClass().getName() + "-Dismiss", Date.from(Instant.now()), String.valueOf(openGithubCommentingBlock.getFlowId()));
+        build.getBuildLog()
+          .closeBlock("Github PR Commenting - Dismissing existing review",
+            getClass().getName() + "-Dismiss",
+            Date.from(Instant.now()),
+            String.valueOf(openGithubCommentingBlock.getFlowId()));
     }
 
     @Override
@@ -138,8 +147,6 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                 final GHRepository repo = github.getRepository(repoName);
                 final GHPullRequest request = repo.getPullRequest(pullId);
 
-                dismissLastPullRequestReview(request, username);
-
                 final GHPullRequestReviewBuilder builder = github.getRepository(repoName).getPullRequest(pullId).createReview();
 
                 final List<SBuild> activeBuilds =
@@ -175,6 +182,16 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                       (nameOne, nameTwo) -> nameOne
                     ));
 
+                final List<SBuild> buildsWithInspections =
+                  activeInfos
+                    .stream()
+                    .filter(inspectionInfo -> {
+                        final List<String[]> inspections = inspectionInfo.getInspections();
+                        return inspections.stream().anyMatch(data -> Integer.parseInt(data[6]) > 0);
+                    })
+                    .map(inspectionInfo -> inspectionInfo.getBuild())
+                    .collect(Collectors.toList());
+
                 final Collection<String> changedFiles = getChangesForBuild(runningBuild, activeBuilds);
 
                 changedFiles.stream().forEach(file -> {
@@ -187,8 +204,17 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
 
                 final StringBuilder bodyBuilder = new StringBuilder()
                                                     .append(new Heading("Analysis Complete", 4)).append("\n")
-                                                    .append(new Heading("Statistics", 5)).append("\n")
-                                                    .append(createStatisticContent(statisticsTotal).build());
+                                                    .append(new Heading("Statistics:", 5)).append("\n")
+                                                    .append(createStatisticContent(statisticsTotal).build()).append("\n")
+                                                    .append(new Heading("More Information:", 5)).append("\n")
+                                                    .append(new UnorderedList<>(
+                                                      buildsWithInspections
+                                                      .stream()
+                                                      .map(
+                                                        build -> new Link(build.getBuildTypeName(), String.format(INSPECTION_URL_PATTERN, build.getBuildId(), build.getBuildTypeId()))
+                                                      )
+                                                      .collect(Collectors.toList())
+                                                    ));
 
                 builder.body(bodyBuilder.toString());
 
@@ -215,7 +241,7 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
         request.listReviews().asList().stream().filter(r -> !r.getState().equals(GHPullRequestReviewState.DISMISSED)).filter(r -> {
             try
             {
-                return r.getUser().getName().equals(actingUserName);
+                return r.getUser().getLogin().equals(actingUserName);
             }
             catch (IOException e)
             {
@@ -227,12 +253,45 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
             try
             {
                 r.dismiss("A new analysis is being ran. Please wait for the results.");
+                for (GHPullRequestReviewComment ghPullRequestReviewComment : r.listReviewComments().asList())
+                {
+                    ghPullRequestReviewComment.delete();
+                }
             }
             catch (IOException e)
             {
-                //Noop - We do not care, if we can not dismiss the review.
+                System.out.println(e.getMessage());
             }
         });
+
+        try
+        {
+            request.listComments().asList().stream().filter(c -> {
+                try
+                {
+                    return c.getUser().getLogin().equals(actingUserName);
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+
+                return false;
+            }).forEach(c -> {
+                try
+                {
+                    c.delete();
+                }
+                catch (IOException e)
+                {
+                    e.printStackTrace();
+                }
+            });
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     private Collection<String> getChangesForBuild(final SBuild targetBuild, final Collection<SBuild> buildGraph)
@@ -249,27 +308,27 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
 
 
         return getFilteredChangesForBuilds(currentBuildChanges
-                 .stream()
-                 .filter(c -> !previousBuildChanges.contains(c))
-                 .collect(Collectors.toList()), buildGraph);
+                                             .stream()
+                                             .filter(c -> !previousBuildChanges.contains(c))
+                                             .collect(Collectors.toList()), buildGraph);
     }
 
     private Collection<String> getFilteredChangesForBuilds(final Collection<SVcsModification> modifications, final Collection<SBuild> builds)
     {
         return modifications
-          .stream()
-          .flatMap(
-            sVcsModification -> {
-                final Collection<FilteredVcsChange> change = Lists.newArrayList();
-                builds.forEach(build -> {
-                    change.addAll(sVcsModification.getFilteredChanges(build));
-                });
-                return change.stream();
-            }
-          )
+                 .stream()
+                 .flatMap(
+                   sVcsModification -> {
+                       final Collection<FilteredVcsChange> change = Lists.newArrayList();
+                       builds.forEach(build -> {
+                           change.addAll(sVcsModification.getFilteredChanges(build));
+                       });
+                       return change.stream();
+                   }
+                 )
                  .map(FilteredVcsChange::getRelativeFileName)
-          .distinct()
-          .collect(Collectors.toList());
+                 .distinct()
+                 .collect(Collectors.toList());
     }
 
     @Nullable
@@ -301,18 +360,22 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                                                       .collect(Collectors.toList());
 
         return statisticsPerInfo
-                                        .stream()
-                                        .reduce(
-                                          new int[6],
-                                          (one, two) -> {
-                                              if (one == null)
-                                                  return two == null ? new int[6] : two;
+                 .stream()
+                 .reduce(
+                   new int[6],
+                   (one, two) -> {
+                       if (one == null)
+                       {
+                           return two == null ? new int[6] : two;
+                       }
 
-                                              if (two == null)
-                                                  return one;
+                       if (two == null)
+                       {
+                           return one;
+                       }
 
-                                              return new int[] {one[0] + two[0], one[1] + two[1], one[2] + two[2], one[3] + two[3], one[4] + two[4], one[5] + two[5]};
-                                          }
-                                        );
+                       return new int[] {one[0] + two[0], one[1] + two[1], one[2] + two[2], one[3] + two[3], one[4] + two[4], one[5] + two[5]};
+                   }
+                 );
     }
 }

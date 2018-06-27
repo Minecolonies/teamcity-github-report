@@ -4,7 +4,7 @@
   <info>
     <name>GithubPRCommenting</name>
     <display-name>Github PR Commenting</display-name>
-    <version>SNAPSHOT-201806261349</version>
+    <version>SNAPSHOT-201806271354</version>
     <description>Enables commenting of inspection results on Github PRs?</description>
 
     <vendor>
