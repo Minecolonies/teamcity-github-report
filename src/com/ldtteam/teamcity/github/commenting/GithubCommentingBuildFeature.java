@@ -1,6 +1,7 @@
 package com.ldtteam.teamcity.github.commenting;
 
 import com.google.common.collect.ImmutableMap;
+import com.ldtteam.teamcity.github.utils.RSA;
 import jetbrains.buildServer.serverSide.BuildFeature;
 import jetbrains.buildServer.serverSide.InvalidProperty;
 import jetbrains.buildServer.serverSide.PropertiesProcessor;
@@ -10,7 +11,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kohsuke.github.GitHub;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.security.GeneralSecurityException;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +34,7 @@ public class GithubCommentingBuildFeature extends BuildFeature
 
     public void register()
     {
-        System.out.println("Regitering github build feature bean.");
+        System.out.println("Registering github build feature bean.");
         this.sBuildServer.registerExtension(GithubCommentingBuildFeature.class, GithubCommentingBuildFeature.class.getName(), this);
     }
 
@@ -84,41 +89,28 @@ public class GithubCommentingBuildFeature extends BuildFeature
     {
         return properties -> {
             final List<InvalidProperty> errors = new ArrayList<>();
-            if (!properties.containsKey("token"))
-                errors.add(new InvalidProperty("token", "Token is missing or not specified."));
+            if (true)
+                return errors;
 
-            if (!properties.containsKey("username"))
-                errors.add(new InvalidProperty("username", "username is missing or not specified."));
+            if (!properties.containsKey("privateKey"))
+                errors.add(new InvalidProperty("privateKey", "Private Key is not specified."));
 
-            if (!properties.containsKey("password"))
-                errors.add(new InvalidProperty("password", "password is missing or not specified."));
+            if (!properties.containsKey("appId"))
+                errors.add(new InvalidProperty("appId", "Github App Id is not specified."));
 
             if (!properties.containsKey("branch"))
-                errors.add(new InvalidProperty("branch", "branch is missing or not specified."));
-            
+                errors.add(new InvalidProperty("branch", "Branch is missing or not specified."));
+
             if (!errors.isEmpty())
                 return errors;
-            
-            final String username = properties.get("username");
-            final String password = properties.get("password");
-            final String token = properties.get("token");
 
             try
             {
-                final GitHub gitHub = GitHub.connect(username, token, password);
-                
-                if (!gitHub.isCredentialValid())
-                {
-                    errors.add(new InvalidProperty("username", "Could not authenticate you against github. Possible your username is wrong."));
-                    errors.add(new InvalidProperty("token", "Could not authenticate you against github. Possible your token is wrong."));
-                    errors.add(new InvalidProperty("password", "Could not authenticate you against github. Possible your password is wrong."));
-                }
+                RSA.getPrivateKeyFromString(properties.get("privateKey"));
             }
-            catch (IOException e)
+            catch (Exception e)
             {
-                errors.add(new InvalidProperty("username", "Could not connect to Github. Please try again later."));
-                errors.add(new InvalidProperty("token", "Could not connect to Github. Please try again later."));
-                errors.add(new InvalidProperty("password", "Could not connect to Github. Please try again later."));
+                errors.add(new InvalidProperty("privateKey", "Failed to read the private key: " + e.getMessage()));
             }
 
             return errors;
@@ -129,7 +121,7 @@ public class GithubCommentingBuildFeature extends BuildFeature
     @Override
     public Map<String, String> getDefaultParameters()
     {
-        return ImmutableMap.of("token" , "<API token>", "username", "<Username>", "password", "<Password>", "branch", "0");
+        return ImmutableMap.of("appId", "00000", "privateKey", "/secrets/teamcity-github-report.pem","branch", "0");
     }
 
     /**

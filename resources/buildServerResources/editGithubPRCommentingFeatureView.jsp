@@ -25,21 +25,15 @@
 
 <l:settingsGroup title="Github Connection">
     <tr>
-        <th class="noBorder"><label for="username">Username:</label></th>
+        <th class="noBorder"><label for="appId">App Id:</label></th>
         <td>
-            <props:textProperty name="username" className="longField"/>
+            <props:textProperty name="appId" className="longField"/>
         </td>
     </tr>
     <tr>
-        <th class="noBorder"><label for="token">API Token:</label></th>
+        <th class="noBorder"><label for="privateKey">Private key:</label></th>
         <td>
-            <props:passwordProperty name="token" className="longField"/>
-        </td>
-    </tr>
-    <tr>
-        <th class="noBorder"><label for="password">Password:</label></th>
-        <td>
-            <props:passwordProperty name="password" className="longField"/>
+            <props:textProperty name="privateKey" className="longField"/>
         </td>
     </tr>
 </l:settingsGroup>

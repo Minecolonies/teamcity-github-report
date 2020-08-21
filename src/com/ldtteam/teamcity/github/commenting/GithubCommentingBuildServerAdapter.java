@@ -1,8 +1,12 @@
 package com.ldtteam.teamcity.github.commenting;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.ldtteam.teamcity.github.inspections.FileInspectionData;
+import com.ldtteam.teamcity.github.utils.RSA;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import jetbrains.buildServer.messages.Status;
 import jetbrains.buildServer.serverSide.*;
 import jetbrains.buildServer.serverSide.buildLog.BlockLogMessage;
@@ -20,8 +24,13 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kohsuke.github.*;
 
+import java.io.File;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.security.Key;
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -72,7 +81,7 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
             try
             {
 
-                final GitHub github = new GitHubBuilder().withOAuthToken(token, username).withPassword(username, password).build();
+                final GitHub github = new GitHubBuilder().withPassword(username, password).build();
 
                 if (!github.isCredentialValid())
                 {
@@ -82,7 +91,7 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
                 final GHRepository repo = github.getRepository(repoName);
                 final GHPullRequest request = repo.getPullRequest(pullId);
 
-                dismissLastPullRequestReview(request, username);
+
             }
             catch (Exception e)
             {
@@ -123,175 +132,147 @@ public class GithubCommentingBuildServerAdapter extends BuildServerAdapter
         final SBuildFeatureDescriptor featureDescriptor = commentingBuildFeature.get();
         final Map<String, String> parameters = featureDescriptor.getParameters();
 
-        final String username = parameters.get("username");
-        final String token = parameters.get("token");
-        final String password = parameters.get("password");
+        final String appId = parameters.get("appId");
+        final String privateKeyPath = parameters.get("privateKey");
         final String url = runningBuild.getVcsRootEntries().get(0).getProperties().get("url");
         final String[] urlParts = url.split("/");
-        final String repoName = urlParts[urlParts.length - 2] + "/" + urlParts[urlParts.length - 1].replace(".git", "");
+        final String repoOwnerName = urlParts[urlParts.length - 2];
+        final String repoName = urlParts[urlParts.length - 1].replace(".git", "");;
+        final String repoTarget = urlParts[urlParts.length - 2] + "/" + urlParts[urlParts.length - 1].replace(".git", "");
+
+        String appToken = "";
 
         try
         {
-            final Integer pullId = Integer.parseInt(parameters.get("branch"));
+            final Key privateKey = RSA.getPrivateKeyFromString(privateKeyPath);
+            final String jws = Jwts.builder().setIssuer(appId).setIssuedAt(Date.from(Instant.now())).setExpiration(Date.from(Instant.now().plus(10, ChronoUnit.MINUTES))).signWith(privateKey).compact();
+
+            final GitHub requestInstallationGithubInstance = new GitHubBuilder().withJwtToken(jws).build();
+            final GHApp app = requestInstallationGithubInstance.getApp();
+            final GHAppInstallation installation = app.getInstallationByRepository(repoOwnerName, repoName);
+            final GHAppInstallationToken token = installation.createToken(ImmutableMap.of(
+              "checks", GHPermissionType.WRITE
+            )).create();
+            appToken = token.getToken();
+        }
+        catch (Exception e)
+        {
+            runningBuild.getBuildLog()
+              .error("FAILURE", e.getMessage(), Date.from(Instant.now()), e.getLocalizedMessage(), String.valueOf(openGithubCommentingBlock.getFlowId()),
+                ImmutableList.of());
+        }
+
+        if (appToken != "")
+        {
 
             try
             {
+                final Integer pullId = Integer.parseInt(parameters.get("branch"));
 
-                final GitHub github = new GitHubBuilder().withOAuthToken(token, username).withPassword(username, password).build();
-
-                if (!github.isCredentialValid())
+                try
                 {
-                    throw new IllegalAccessException("Could not authenticate configured user against GitHub.");
+
+                    final GitHub checksGithub = new GitHubBuilder().withAppInstallationToken(appToken).build();
+
+                    if (!checksGithub.isCredentialValid())
+                    {
+                        throw new IllegalAccessException("Could not authenticate configured user against GitHub.");
+                    }
+
+                    final GHRepository repo = checksGithub.getRepository(repoTarget);
+                    final GHPullRequest request = repo.getPullRequest(pullId);
+
+                    final GHCheckRunBuilder builder = repo.createCheckRun("Inspections", request.getMergeCommitSha());
+
+                    final List<SBuild> activeBuilds =
+                      runningBuild
+                        .getBuildPromotion()
+                        .getAllDependencies()
+                        .stream()
+                        .filter(p -> p.getAssociatedBuild() != null)
+                        .map(BuildPromotion::getAssociatedBuild).collect(Collectors.toList());
+                    activeBuilds.add(runningBuild);
+
+                    final List<InspectionInfo> activeInfos =
+                      activeBuilds
+                        .stream()
+                        .map(this::getInspectionInfo)
+                        .collect(Collectors.toList());
+
+                    final List<List<String[]>> inspectionIds =
+                      activeInfos
+                        .stream()
+                        .map(InspectionInfo::getInspections)
+                        .collect(Collectors.toList());
+
+                    final Map<Long, String> idNameMap =
+                      inspectionIds
+                        .stream()
+                        .flatMap(Collection::stream)
+                        .filter(data -> Integer.parseInt(data[6]) > 0)
+                        .distinct()
+                        .collect(Collectors.toMap(
+                          data -> Long.parseLong(data[2]),
+                          data -> data[3],
+                          (nameOne, nameTwo) -> nameOne
+                        ));
+
+                    final List<SBuild> buildsWithInspections =
+                      activeInfos
+                        .stream()
+                        .filter(inspectionInfo -> {
+                            final List<String[]> inspections = inspectionInfo.getInspections();
+                            return inspections.stream().anyMatch(data -> Integer.parseInt(data[6]) > 0);
+                        })
+                        .map(InspectionInfo::getBuild)
+                        .collect(Collectors.toList());
+
+                    final Collection<String> changedFiles = getChangesForBuild(runningBuild, activeBuilds);
+                    final int[] statisticsTotal = getStatistics(activeInfos);
+                    final int diffErrors = statisticsTotal[4] - statisticsTotal[5];
+
+                    final String bodyBuilder = new Heading("Analysis Complete", 4) + "\n"
+                                                 + new Heading("Statistics:", 5) + "\n"
+                                                 + createStatisticContent(statisticsTotal).build() + "\n"
+                                                 + new Heading("More Information:", 5) + "\n"
+                                                 + new UnorderedList<>(
+                      buildsWithInspections
+                        .stream()
+                        .map(
+                          build -> new Link(build.getBuildTypeName(),
+                            String.format(INSPECTION_URL_PATTERN, build.getBuildId(), build.getBuildTypeId()))
+                        )
+                        .collect(Collectors.toList())
+                    );
+                    final GHCheckRunBuilder.Output output = new GHCheckRunBuilder.Output("Inspection results", bodyBuilder);
+
+                    changedFiles.stream().forEach(file -> {
+                        final FileInspectionData fileInspectionData = new FileInspectionData(file, activeInfos, idNameMap.keySet(), request);
+                        fileInspectionData.process(output);
+                    });
+
+                    builder.withStatus(GHCheckRun.Status.COMPLETED);
+                    builder.withCompletedAt(Date.from(Instant.now()));
+                    builder.withConclusion(diffErrors < 0 ? GHCheckRun.Conclusion.SUCCESS : (diffErrors == 0) ? GHCheckRun.Conclusion.NEUTRAL : GHCheckRun.Conclusion.ACTION_REQUIRED);
+
+                    final GHCheckRun run = builder.create();
+                    runningBuild.getBuildLog().message("Uploaded check run: " + run.getName(), Status.NORMAL, MessageAttrs.serverMessage());
                 }
-
-                final GHRepository repo = github.getRepository(repoName);
-                final GHPullRequest request = repo.getPullRequest(pullId);
-
-                final GHPullRequestReviewBuilder builder = github.getRepository(repoName).getPullRequest(pullId).createReview();
-
-                final List<SBuild> activeBuilds =
-                  runningBuild
-                    .getBuildPromotion()
-                    .getAllDependencies()
-                    .stream()
-                    .filter(p -> p.getAssociatedBuild() != null)
-                    .map(BuildPromotion::getAssociatedBuild).collect(Collectors.toList());
-                activeBuilds.add(runningBuild);
-
-                final List<InspectionInfo> activeInfos =
-                  activeBuilds
-                    .stream()
-                    .map(this::getInspectionInfo)
-                    .collect(Collectors.toList());
-
-                final List<List<String[]>> inspectionIds =
-                  activeInfos
-                    .stream()
-                    .map(InspectionInfo::getInspections)
-                    .collect(Collectors.toList());
-
-                final Map<Long, String> idNameMap =
-                  inspectionIds
-                    .stream()
-                    .flatMap(Collection::stream)
-                    .filter(data -> Integer.parseInt(data[6]) > 0)
-                    .distinct()
-                    .collect(Collectors.toMap(
-                      data -> Long.parseLong(data[2]),
-                      data -> data[3],
-                      (nameOne, nameTwo) -> nameOne
-                    ));
-
-                final List<SBuild> buildsWithInspections =
-                  activeInfos
-                    .stream()
-                    .filter(inspectionInfo -> {
-                        final List<String[]> inspections = inspectionInfo.getInspections();
-                        return inspections.stream().anyMatch(data -> Integer.parseInt(data[6]) > 0);
-                    })
-                    .map(inspectionInfo -> inspectionInfo.getBuild())
-                    .collect(Collectors.toList());
-
-                final Collection<String> changedFiles = getChangesForBuild(runningBuild, activeBuilds);
-
-                changedFiles.stream().forEach(file -> {
-                    final FileInspectionData fileInspectionData = new FileInspectionData(file, activeInfos, idNameMap.keySet(), request);
-                    fileInspectionData.process(builder);
-                });
-
-                final int[] statisticsTotal = getStatistics(activeInfos);
-                final int diffErrors = statisticsTotal[4] - statisticsTotal[5];
-
-                final StringBuilder bodyBuilder = new StringBuilder()
-                                                    .append(new Heading("Analysis Complete", 4)).append("\n")
-                                                    .append(new Heading("Statistics:", 5)).append("\n")
-                                                    .append(createStatisticContent(statisticsTotal).build()).append("\n")
-                                                    .append(new Heading("More Information:", 5)).append("\n")
-                                                    .append(new UnorderedList<>(
-                                                      buildsWithInspections
-                                                      .stream()
-                                                      .map(
-                                                        build -> new Link(build.getBuildTypeName(), String.format(INSPECTION_URL_PATTERN, build.getBuildId(), build.getBuildTypeId()))
-                                                      )
-                                                      .collect(Collectors.toList())
-                                                    ));
-
-                builder.body(bodyBuilder.toString());
-
-                builder.event(diffErrors < 0 ? GHPullRequestReviewEvent.REQUEST_CHANGES : GHPullRequestReviewEvent.APPROVE);
-                builder.create();
+                catch (Exception e)
+                {
+                    runningBuild.getBuildLog()
+                      .error("FAILURE", e.getMessage(), Date.from(Instant.now()), e.getLocalizedMessage(), String.valueOf(openGithubCommentingBlock.getFlowId()),
+                        ImmutableList.of());
+                }
             }
-            catch (Exception e)
+            catch (NumberFormatException nfe)
             {
-                runningBuild.getBuildLog()
-                  .error("FAILURE", e.getMessage(), Date.from(Instant.now()), e.getLocalizedMessage(), String.valueOf(openGithubCommentingBlock.getFlowId()),
-                    ImmutableList.of());
+                runningBuild.getBuildLog().message("Cannot upload comments to Github. Branch is not a number.", Status.ERROR, MessageAttrs.serverMessage());
             }
         }
-        catch (NumberFormatException nfe)
-        {
-            runningBuild.getBuildLog().message("Cannot upload comments to Github. Branch is not a number.", Status.ERROR, MessageAttrs.serverMessage());
-        }
+
 
         runningBuild.getBuildLog().closeBlock("Github PR Commenting", getClass().getName(), Date.from(Instant.now()), String.valueOf(openGithubCommentingBlock.getFlowId()));
-    }
-
-    private void dismissLastPullRequestReview(final GHPullRequest request, final String actingUserName)
-    {
-        request.listReviews().asList().stream().filter(r -> !r.getState().equals(GHPullRequestReviewState.DISMISSED)).filter(r -> {
-            try
-            {
-                return r.getUser().getLogin().equals(actingUserName);
-            }
-            catch (IOException e)
-            {
-                //Noop- We do not care, if we can not get the user we can not dismiss it either.
-            }
-
-            return false;
-        }).forEach(r -> {
-            try
-            {
-                r.dismiss("A new analysis is being ran. Please wait for the results.");
-                for (GHPullRequestReviewComment ghPullRequestReviewComment : r.listReviewComments().asList())
-                {
-                    ghPullRequestReviewComment.delete();
-                }
-            }
-            catch (IOException e)
-            {
-                System.out.println(e.getMessage());
-            }
-        });
-
-        try
-        {
-            request.listComments().asList().stream().filter(c -> {
-                try
-                {
-                    return c.getUser().getLogin().equals(actingUserName);
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-
-                return false;
-            }).forEach(c -> {
-                try
-                {
-                    c.delete();
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-            });
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
     }
 
     private Collection<String> getChangesForBuild(final SBuild targetBuild, final Collection<SBuild> buildGraph)
